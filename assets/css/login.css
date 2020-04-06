@@ -1,0 +1,38 @@
+body{
+    height: 100vh;
+    display : flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(to bottom, rgba(92, 77, 66, 0.8) 0%, rgba(92, 77, 66, 0.8) 100%), url("../img/portfolio/bg-masthead.jpg");
+}
+
+.form-login{
+    flex-basis: 450px;
+    
+}
+.card-header > h2{
+    color: #F4623A;
+}
+.card-header{
+    
+    text-transform: uppercase;
+  
+    display: flex;
+    justify-content: center;
+    align-items: center ;
+    
+}
+.card-footer{
+
+    display: flex;
+    justify-content: center;
+    align-items: center ;
+    
+}
+.card-footer > button{
+    background-color: #D0A24B;
+} 
+.card-body{
+    font-family: "Merriweather Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    
+}
