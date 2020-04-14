@@ -2843,11 +2843,12 @@ fieldset:disabled a.btn {
 }
 
 .btn-outline-success {
+  color: #D0d0d0;
   color: #28a745;
   border-color: #28a745;
 }
 .btn-outline-success:hover {
-  color: #fff;
+  color: #D0d0d0;
   background-color: #28a745;
   border-color: #28a745;
 }

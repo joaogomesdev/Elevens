@@ -11,8 +11,9 @@
                         <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#contact">Contact</a></li>
                     </ul>
                     <ul class="navbar-nav ml-auto my-2 my-lg-0">
-                        <li class="nav-item" ><a href="login.php" class="btn btn-success" id="loginBtn">Login</a></li>
-                        <li class="nav-item"><a href="" class="btn btn-success" id="registerBtn">Registar</a></li>
+                    <li class="nav-item">
+              <a class="btn btn-primary" href="logout.php">Sair</a>
+          </li>
                     </ul>
                 </div>
             </div>
