@@ -2,6 +2,7 @@
 
 
 <?php
+
   //duvidas
   $duvidas = array();
   //abrir o arquivo

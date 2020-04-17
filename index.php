@@ -19,24 +19,24 @@
   }
 
   </style>
-  
+
   </head>
 
   <body>
 
   <nav class="navbar navbar-dark bg-dark">
       <a class="navbar-brand" href="index.php">
-        
+
           Elevens Caffé
-      
+
 
       </a>
-    
-    </nav> 
 
-     
+    </nav>
+
+   
       <div class="row">
-          
+    
 
         <div class="col-6">
 
@@ -50,13 +50,24 @@
 
                   <?php if( isset($_GET['login']) && isset($_GET['login']) == 'erro' ) : ?>
 
-        
+
                     <div class="alert alert-danger" role="alert">
 
                         E-Mail ou Password inválido(s)
 
                     </div>
-                
+
+
+                  <?php endif ?>
+
+                  <?php if( isset($_GET['registo']) && isset($_GET['registo']) == 'success' ) : ?>
+
+
+                  <div class="alert alert-info" role="alert">
+
+                   Faça Login
+
+                  </div> 
 
                   <?php endif ?>
 
@@ -68,17 +79,17 @@
                         </div>
 
                   <?php endif ?>
-                <form action="validar_login.php" method="POST">
+                <form action="" method="POST">
                   <div class="form-group">
-                    <input name="email" type="email" class="form-control"  placeholder="E-Mail">
+                    <input name="" type="email" class="form-control"  placeholder="E-Mail">
                   </div>
                   <div class="form-group">
-                    <input name="password" type="password" class="form-control"  placeholder="Password">
+                    <input name="" type="password" class="form-control"  placeholder="Password">
                   </div>
 
 
 
-                  <button class="btn btn-lg btn-success btn-block" type="submit">Entrar</button>
+                  <button class="btn btn-lg btn-success btn-block" name="login-submit" id="login-submit" type="submit">Entrar</button>
                 </form>
               </div>
             </div>
@@ -91,23 +102,38 @@
 
             <div class="card">
               <div class="card-header">
+
                 Registar
+
               </div>
               <div class="card-body">
-                <form action="#" method="POST">
-                  <div class="form-group">
-                    <input name="nome" type="text" class="form-control"  placeholder="Nome">
-                  </div>
-                  <div class="form-group">
-                    <input name="email" type="email" class="form-control"  placeholder="E-Mail">
-                  </div>
-                  <div class="form-group">
-                    <input name="password" type="password" class="form-control"  placeholder="Password">
-                  </div>
+                      
+                        <?php if( isset($_GET['registo']) && isset($_GET['registo']) == 'success' ) : ?>
 
 
+                        <div class="alert alert-success" role="alert">
 
-                  <button class="btn btn-lg btn-info btn-block" type="submit">Registar</button>
+                        Registado com sucesso
+
+                        </div> 
+
+                        <?php endif ?>
+                          
+                <form action="includes/singup.inc.php" method="POST">
+                  <div class="form-group">
+                    <input name="username" id="username" type="text" class="form-control"  placeholder="Nome">
+                  </div>
+                  <div class="form-group">
+                    <input name="email" id="email" type="email" class="form-control"  placeholder="E-Mail">
+                  </div>
+                  <div class="form-group">
+                    <input name="password" id="password" type="password" class="form-control"  placeholder="Password">
+                  </div>
+                  <div class="form-group">
+                    <input name="rePassword" id="rePassword" type="password" class="form-control"  placeholder="Confirme a Password">
+                  </div>
+
+                  <button class="btn btn-lg btn-info btn-block" name="register-submit" id="register-submit" type="submit">Registar</button>
                 </form>
               </div>
             </div>
@@ -116,8 +142,8 @@
         </div>
 
 
-    
 
-  
+
+
   </body>
 </html>
