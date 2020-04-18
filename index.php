@@ -1,5 +1,6 @@
 <?php
-    session_start();
+
+session_start();
 
 ?>
 
@@ -28,8 +29,6 @@
       <a class="navbar-brand" href="index.php">
 
           Elevens Caffé
-
-
       </a>
 
     </nav>
@@ -79,17 +78,26 @@
                         </div>
 
                   <?php endif ?>
-                <form action="" method="POST">
+                <form action="includes/login.inc.php" method="POST">
                   <div class="form-group">
-                    <input name="" type="email" class="form-control"  placeholder="E-Mail">
+                    <input name="email" id="email" type="email" class="form-control"  placeholder="E-Mail">
                   </div>
                   <div class="form-group">
-                    <input name="" type="password" class="form-control"  placeholder="Password">
+                    <input name="password" id="password" type="password" class="form-control"  placeholder="Password">
                   </div>
+                  <?php if( isset($_GET['newpwd']) && isset($_GET['newpwd']) == 'passwordupdated' ) : ?>
 
+                    <div class="alert alert-sucess" role="alert">
+
+                        Password Mudada com Sucesso!
+                    </div>
+
+                    <?php endif ?>
 
 
                   <button class="btn btn-lg btn-success btn-block" name="login-submit" id="login-submit" type="submit">Entrar</button>
+
+                   <a type="button" class="btn btn-outline-primary form-control mt-3" href="reset_pass_request.php">Esquecime da password</a>
                 </form>
               </div>
             </div>
@@ -133,7 +141,7 @@
                     <input name="rePassword" id="rePassword" type="password" class="form-control"  placeholder="Confirme a Password">
                   </div>
 
-                  <button class="btn btn-lg btn-info btn-block" name="register-submit" id="register-submit" type="submit">Registar</button>
+                  <button class="btn btn-lg btn-info btn-block form-control" name="register-submit" id="register-submit" type="submit">Registar</button>
                 </form>
               </div>
             </div>

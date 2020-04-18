@@ -1,5 +1,5 @@
 <?php 
-require_once "validar_acesso.php" 
+session_start();
 
 ?>
 
@@ -62,11 +62,11 @@ require_once "validar_acesso.php"
 
                     <div class="row mt-5">
                       <div class="col-6">
-                        <a class="btn btn-lg btn-success btn-block" href="home.php">Voltar</a>
+                        <a class="btn btn-lg btn-success btn-block" href="menu_duvida.php">Voltar</a>
                       </div>
 
                       <div class="col-6">
-                        <button class="btn btn-lg btn-outline-info btn-block" type="submit">Enviar Dúvida</button>
+                        <button class="btn btn-lg btn-outline-info btn-block" name="colocar-duvida-submit" type="submit">Enviar Dúvida</button>
                       </div>
                     </div>
                   </form>

@@ -1,29 +1,11 @@
-<?php require_once "validar_acesso.php" ?>
+
 
 
 <?php
 
-  //duvidas
-  $duvidas = array();
-  //abrir o arquivo
+session_start();
 
-  $arquivo = fopen('../../../Elevens/arquivo.txt' , 'r');
-
-  //enquanto hover registos ou linhas a ser recuperados
-  while(!feof($arquivo)){//testa pelo fim do arquivo até ao end of file e reposiciona o corsor no ficheiro
-
-      //linhas
-      $registo = fgets($arquivo); //registo da linha
-      $duvidas[] = $registo ;
-      
-  }
-  //fecha o arquivo 
-  fclose($arquivo);
-  //
-
-  // echo "<pre>";
-  // print_r($duvidas);
-  // echo "</pre>";
+ 
 
 ?>
 
@@ -47,6 +29,19 @@
 
   <?php include_once "navbar.php" ?>
 
+  <?php if( isset($_GET['registo']) && isset($_GET['registo']) == 'success' ) : ?>
+
+<div class="alert alert-success" role="alert">
+
+  Duvida colocada com sucesso     
+
+</div>
+<div class="alert alert-info" role="alert">
+
+  Iremos Responder logo que possamos     
+
+</div>
+<?php endif ?>
     <div class="container">    
       <div class="row">
 
@@ -60,53 +55,25 @@
             
             <div class="card-body">
               
-                              
-              
-              <?php foreach($duvidas as $duvida) : ?>
-
-               
-                  <?php
-                       
-
-                        $duvida_dados = explode('#' , $duvida);
-                        
-                      
-
-
-                        if($_SESSION['profile_id'] == 2){
-                          //só vou exibir a duvida que foi criada pelo user
-                          if($_SESSION['id'] != $duvida_dados[0]){
-                            continue;
-                          }
-                        }
-
-                        if(count($duvida_dados) < 3){
-                          continue;
-                        }
-
-
-                        
-                  ?>
                   <div class="card mb-3 bg-light">
                     <div class="card-header">
-                    <h5>ID do Utilizador <span class="badge badge-primary"><?=$duvida_dados[0]; ?></span></h6>
+                    <h5>ID do Utilizador <span class="badge badge-primary"></span></h6>
                   </div>
                     <div class="card-body">
 
-                      <h6 class="card-title"><?=$duvida_dados[1]; ?> </h5>
-                      <h7 class="card-subtitle mb-2 text-muted"><?= $duvida_dados[2]; ?></h7>
-                      <p class="card-text"><?=$duvida_dados[3]; ?></p>
-
+                      <h6 class="card-title"></h5>
+                      <h7 class="card-subtitle mb-2 text-muted"></h7>
+                      <p class="card-text"></p>
                       
                     </div>
                   </div>
 
-              <?php endforeach ?>
+           
 
 
               <div class="row mt-5">
                 <div class="col-6">
-                <a class="btn btn-lg btn-success btn-block" href="home.php">Voltar</a>
+                <a class="btn btn-lg btn-success btn-block" href="menu_duvidas.php">Voltar</a>
                 </div>
               </div>
             </div>

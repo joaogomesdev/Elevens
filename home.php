@@ -1,3 +1,10 @@
+<?php
+
+session_start();
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -24,20 +31,47 @@
 
     </head>
     <!---- Icon admin Login -->
-    <?php include "assets/content/icon_admin.php" ?>
+    <?php
+    if(isset($_SESSION['userName'])){
+
+
+   include "assets/content/icon_admin.php" ;
+
+    }
+
+        ?>
 
 
     <?php include "assets/content/navbar.php" ?>
 
         <!-- Masthead-->
-      
+    
          
         
         <header class="masthead">
             <div class="container h-100">
                 <div class="row h-100 align-items-center justify-content-center text-center">
                     <div class="col-lg-10 align-self-end">
-                        <h1 class="text-uppercase text-white font-weight-bold">Bem-Vindo João Gomes</h1>
+                        <h1 class="text-uppercase text-white font-weight-bold">Bem-Vindo 
+                            
+                        
+                        
+                        
+                        <?php
+                        
+                        if(isset($_SESSION['userName'])){
+
+                                echo  $_SESSION['userName'];
+                        }
+                        else{
+                            echo '';
+                        }
+                        
+                        
+                        ?>
+                    
+                    
+                    </h1>
                         <hr class="divider my-4" />
                     </div>
                     <div class="col-lg-8 align-self-baseline">
@@ -49,18 +83,42 @@
         </header>
 
         <!-- About section-->
-        <section class="page-section bg-primary" id="about">
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-lg-8 text-center">
-                        <h2 class="text-white mt-0">Deseja fazer uma reserva?</h2>
-                        <hr class="divider light my-4" />
-                        <p class="text-white-50 mb-4">Faça a sua reserva com pelo menos <span>2 dia</span>s de antecedência!</p>
-                        <a class="btn btn-light btn-xl js-scroll-trigger" href="#services">Get Started!</a>
-                    </div>
-                </div>
-            </div>
-        </section>
+        <?php
+
+                        if(isset($_SESSION['userId'])){
+
+                            echo '<section class="page-section bg-warning" id="about">
+                            <div class="container">
+                                <div class="row justify-content-center">
+                                    <div class="col-lg-8 text-center">
+                                        <h2 class="text-white mt-0">Está<span> Autenticado! </span></h2>
+                                        <hr class="divider light my-4" />
+                                        <p class="text-white-50 mb-4">Agora pode fazer uma reserva!</p>
+                                        <a class="btn btn-light btn-xl js-scroll-trigger" href="#services">Reservar Mesa!</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>';
+                        }
+                        else{
+
+                            echo '<section class="page-section bg-warning" id="about">
+                            <div class="container">
+                                <div class="row justify-content-center">
+                                    <div class="col-lg-8 text-center">
+                                        <h2 class="text-white mt-0">Não  está <span>autenticado</span></h2>
+                                    
+                                        <p class="text-white-50 mb-4"></p>
+                                        <a href="index.php" class="btn btn-light btn-xl js-scroll-trigger" href="#services">Autenticar!</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>';
+
+
+                        }
+
+?>
 
         <!-- Services section-->
         <section class="page-section" id="services">

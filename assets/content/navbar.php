@@ -11,9 +11,26 @@
                         <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#contact">Contact</a></li>
                     </ul>
                     <ul class="navbar-nav ml-auto my-2 my-lg-0">
-                    <li class="nav-item">
-              <a class="btn btn-primary" href="logout.php">Sair</a>
-          </li>
+                   
+                    <?php
+                                if(!isset($_SESSION['userId'])){
+
+                                    echo  '<li class="nav-item">
+                                    <a class="btn btn-success"href="index.php">Autenticar</a>
+                                    </li>';
+                                }
+                                else{
+        
+                                   
+                                    echo  ' <li class="nav-item"><a class="btn btn-warning text-white pt-2 pb-2 nav-link js-scroll-trigger" href="#contact">'.$_SESSION['userName'].'</a></li>';
+
+                                    echo  '<li class="nav-item"><a class="btn btn-primary pt-2 pb-2 pr-3 text-white ml-2 mr-6 nav-link js-scroll-trigger" href="logout.php">Sair</a></li>';
+        
+        
+                                }
+                          
+                            ?>
+         
                     </ul>
                 </div>
             </div>

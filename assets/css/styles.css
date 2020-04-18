@@ -127,6 +127,15 @@ span{
 
 }
 
+nAutenticado{
+
+  text-transform: uppercase;
+  color: red;
+  font-style: italic;
+  font-weight: 300;
+
+}
+
 .float{
   z-index: 1000;
 	position:fixed;
