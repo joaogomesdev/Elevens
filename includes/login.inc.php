@@ -9,9 +9,10 @@ if(isset($_POST['login-submit'])){
     $password = $_POST['password'];
 
 
+
     if(empty($email)  || empty($password)){
         
-        header("Location: ../index.php?error=emptyfiels");
+        header("Location: ../autenticar.php?error=emptyfiels");
         exit();
     }
     else{
@@ -20,7 +21,7 @@ if(isset($_POST['login-submit'])){
 
         if(!mysqli_stmt_prepare($stmt , $sql)){
 
-            header("Location: ../index.php?error=sqlierror"); 
+            header("Location: ../autenticar.php?error=sqlierror"); 
             exit();
 
         }
@@ -36,7 +37,7 @@ if(isset($_POST['login-submit'])){
                 $pwdCheck = password_verify($password, $row['password']);// ve se as pwd sao iguais
                
                 if($pwdCheck == false){
-                    header("Location: ../index.php?error=passErrada");
+                    header("Location: ../autenticar.php?error=passErrada");
                     exit();
                 }
 
@@ -46,20 +47,21 @@ if(isset($_POST['login-submit'])){
                         $_SESSION['userId'] = $row['id'];
                         $_SESSION['userName'] = $row['username'];
                         $_SESSION['userEmail'] = $row['mail'];
+                        $_SESSION['userStatus'] = $row['user_status'];
 
-                        header('Location:  ../home.php?login=sucess');
+                        header('Location:  ../index.php?login=sucess');
                         exit();
 
                 }
 
                 else{
-                     header("Location: ../index.php?error=passErrada");
+                     header("Location: ../autenticar.php?error=passErrada");
                      exit();
                  }
 
              }
              else{
-                header("Location: ../index.php?error=noUser");
+                header("Location: ../autenticar.php?error=noUser");
                 exit();
              }
 
@@ -70,6 +72,6 @@ if(isset($_POST['login-submit'])){
    
 }
 else{
-    header("Location: ../home.php");
+    header("Location: ../autenticar.php");
     exit();
 }

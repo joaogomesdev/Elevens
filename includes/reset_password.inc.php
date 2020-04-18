@@ -9,11 +9,11 @@ if (isset($_POST['reset-pass-submit'])) {
 
   if(empty($password)  || empty($rePassword)){
         
-    header("Location: ../index.php?error=emptyfiels");
+    header("Location: ../autnticar.php?error=emptyfiels");
     exit();
   }else if($password != $rePassword){
 
-    header("Location: ../index.php?error=passNotSame");
+    header("Location: ../autnticar.php?error=passNotSame");
     exit();
   }
 
@@ -91,7 +91,7 @@ if (isset($_POST['reset-pass-submit'])) {
                     }else {
                         mysqli_stmt_bind_param($stmt, "s" , $tokenEmail);
                         mysqli_stmt_execute($stmt);
-                        header('Location: ../index.php?newpwd=passwordupdated');
+                        header('Location: ../autnticar.php?newpwd=passwordupdated');
                     }
                 }
 
@@ -112,5 +112,5 @@ if (isset($_POST['reset-pass-submit'])) {
 
 } else{
 
-    header("Location: ../index.php?erro=");
+    header("Location: ../autnticar.php?erro=");
 }

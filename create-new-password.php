@@ -26,7 +26,7 @@ session_start();
   <body>
 
   <nav class="navbar navbar-dark bg-dark">
-      <a class="navbar-brand" href="index.php">
+      <a class="navbar-brand" href="indexs.php">
 
           Elevens Caffé
 

@@ -16,7 +16,7 @@
                                 if(!isset($_SESSION['userId'])){
 
                                     echo  '<li class="nav-item">
-                                    <a class="btn btn-success"href="index.php">Autenticar</a>
+                                    <a class="btn btn-success"href="autenticar.php">Autenticar</a>
                                     </li>';
                                 }
                                 else{

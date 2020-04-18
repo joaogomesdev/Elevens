@@ -5,7 +5,7 @@
       </a>
       <ul class="navbar-nav">
           <li class="nav-item">
-              <a class="btn btn-danger"href="../home.php">Voltar</a>
+              <a class="btn btn-danger"href="menu_duvidas.php">Voltar</a>
           </li>
       </ul>
     </nav> 
