@@ -62,7 +62,7 @@ session_start();
 
                     <div class="row mt-5">
                       <div class="col-6">
-                        <a class="btn btn-lg btn-success btn-block" href="menu_duvida.php">Voltar</a>
+                        <a class="btn btn-lg btn-success btn-block" href="menu_duvidas.php">Voltar</a>
                       </div>
 
                       <div class="col-6">

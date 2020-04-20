@@ -10,6 +10,7 @@
       
         
       $userid = $_SESSION['userId'];
+      $username = $_SESSION['userName'];
       $titulo = $_POST['titulo'];
       $categoria =  $_POST['categoria'];
       $descricao =  $_POST['descricao'];
@@ -24,7 +25,7 @@
     
         else {
     
-            $sql = "SELECT 	userId, titulo  FROM duvidas WHERE userId=? and titulo=? ";
+            $sql = "SELECT 	id_user, username , titulo  FROM duvidas WHERE id_user=? and username=? and titulo=? ";
             $stmt = mysqli_stmt_init($conn);
         
             if(!mysqli_stmt_prepare($stmt , $sql)){
@@ -34,7 +35,7 @@
             }
             else {
     
-                mysqli_stmt_bind_param($stmt, "ss" , $userid, $titulo);
+                mysqli_stmt_bind_param($stmt, "sss" , $userid, $_SESSION['userName'], $titulo);
                 mysqli_stmt_execute($stmt);
                 mysqli_stmt_store_result($stmt);
                 $result = mysqli_stmt_num_rows($stmt);
@@ -45,7 +46,7 @@
                  }
 
                 else{
-                    $sql = "INSERT INTO duvidas (userid, titulo ,categoria, descricao) VALUES ( ? , ? , ? ,?)";
+                    $sql = "INSERT INTO duvidas (id_user, username,titulo ,categoria, descricao) VALUES ( ? , ? ,  ? , ? ,?)";
                     $stmt = mysqli_stmt_init($conn);
         
                     if(!mysqli_stmt_prepare($stmt , $sql)){
@@ -55,7 +56,7 @@
                     else{
                      
         
-                        mysqli_stmt_bind_param($stmt, 'ssss',  $userid, $titulo, $categoria , $descricao);
+                        mysqli_stmt_bind_param($stmt, 'sssss',  $userid,$username, $titulo, $categoria , $descricao);
                         mysqli_stmt_execute($stmt);
         
                         header("Location: consultar_duvida.php?registo=success");
