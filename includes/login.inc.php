@@ -12,7 +12,7 @@ if(isset($_POST['login-submit'])){
 
     if(empty($email)  || empty($password)){
         
-        header("Location: ../autenticar.php?error=emptyfiels");
+        header("Location: ../autenticar.php?LoginEmptyfiels");
         exit();
     }
     else{
@@ -21,7 +21,7 @@ if(isset($_POST['login-submit'])){
 
         if(!mysqli_stmt_prepare($stmt , $sql)){
 
-            header("Location: ../autenticar.php?error=sqlierror"); 
+            header("Location: ../autenticar.php?sqlierror"); 
             exit();
 
         }
@@ -37,7 +37,7 @@ if(isset($_POST['login-submit'])){
                 $pwdCheck = password_verify($password, $row['password']);// ve se as pwd sao iguais
                
                 if($pwdCheck == false){
-                    header("Location: ../autenticar.php?error=passErrada");
+                    header("Location: ../autenticar.php?passErrada");
                     exit();
                 }
 
@@ -55,13 +55,13 @@ if(isset($_POST['login-submit'])){
                 }
 
                 else{
-                     header("Location: ../autenticar.php?error=passErrada");
+                     header("Location: ../autenticar.php?passErrada");
                      exit();
                  }
 
              }
              else{
-                header("Location: ../autenticar.php?error=noUser");
+                header("Location: ../autenticar.php?noUser");
                 exit();
              }
 

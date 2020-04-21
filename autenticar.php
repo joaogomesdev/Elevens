@@ -42,7 +42,18 @@ session_start();
               </div>
               <div class="card-body">
 
-                  <?php if( isset($_GET['login']) && isset($_GET['login']) == 'erro' ) : ?>
+                  <?php if(  isset($_GET['LoginEmptyfiels']) ) : ?>
+
+
+                    <div class="alert alert-info" role="alert">
+
+                        Preencha os campos por favor :)
+
+                    </div>
+
+
+                  <?php endif ?>
+                  <?php if(  isset($_GET['LoginError'])  ) : ?>
 
 
                     <div class="alert alert-danger" role="alert">
@@ -54,7 +65,7 @@ session_start();
 
                   <?php endif ?>
 
-                  <?php if( isset($_GET['registo']) && isset($_GET['registo']) == 'success' ) : ?>
+                  <?php if(  isset($_GET['RegisterSuccess'])  ) : ?>
 
 
                   <div class="alert alert-info" role="alert">
@@ -65,7 +76,7 @@ session_start();
 
                   <?php endif ?>
 
-                  <?php if( isset($_GET['login']) && isset($_GET['login']) == 'erro2' ) : ?>
+                  <?php if(  isset($_GET['acesso']) == 'negado' ) : ?>
 
                         <div class="alert alert-danger" role="alert">
 
@@ -73,9 +84,25 @@ session_start();
                         </div>
 
                   <?php endif ?>
+                  <?php if(  isset($_GET['noUser'])  ) : ?>
+
+                        <div class="alert alert-info" role="alert">
+
+                            Utilizador não Registado
+                        </div>
+
+                  <?php endif ?>
+                  <?php if(  isset($_GET['passErrada'])  ) : ?>
+
+                        <div class="alert alert-danger" role="alert">
+
+                            Palavra passe errada
+                        </div>
+
+                  <?php endif ?>
                 <form action="includes/login.inc.php" method="POST">
                   <div class="form-group">
-                    <input name="email" id="email" type="email" class="form-control"  placeholder="E-Mail">
+                    <input name="email" id="email" type="text" class="form-control"  placeholder="E-Mail">
                   </div>
                   <div class="form-group">
                     <input name="password" id="password" type="password" class="form-control"  placeholder="Password">
@@ -111,7 +138,7 @@ session_start();
               </div>
               <div class="card-body">
                       
-                        <?php if( isset($_GET['registo']) && isset($_GET['registo']) == 'success' ) : ?>
+                        <?php if( isset($_GET['RegisterSuccess']) ) : ?>
 
 
                         <div class="alert alert-success" role="alert">
@@ -121,6 +148,24 @@ session_start();
                         </div> 
 
                         <?php endif ?>
+                        <?php if( isset($_GET['userTakenRegister'])  ) : ?>
+
+
+                          <div class="alert alert-info" role="alert">
+
+                          Utilizador já registado
+
+                          </div> 
+
+                          <?php endif ?>
+                          <?php if(  isset($_GET['noUser'])  ) : ?>
+
+                          <div class="alert alert-info" role="alert">
+
+                              Por Favor faça o seu registo
+                          </div>
+
+                          <?php endif ?>
                           
                 <form action="includes/singup.inc.php" method="POST">
                   <div class="form-group">

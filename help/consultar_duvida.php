@@ -5,6 +5,11 @@
 
 session_start();
 
+if(!isset($_SESSION['userId'])){
+
+  header("Location: ../autenticar.php?acesso=negado");
+  exit();
+}
  
 
 ?>
@@ -43,6 +48,19 @@ session_start();
 
 </div>
 <?php endif ?>
+  <?php if( isset($_GET['update']) && isset($_GET['update']) == 'success' ) : ?>
+
+<div class="alert alert-success" role="alert">
+
+  Duvida Eliminada com Sucesso    
+
+</div>
+
+
+<?php endif ?>
+
+
+
     <div class="container">    
       <div class="row">
 
@@ -74,6 +92,15 @@ session_start();
                   <div class="card mb-3 bg-light">
                     <div class="card-header">
                     <h5> <?php echo $row['username']?> <span class="badge badge-primary"><?php echo $row['id_user']?></span></h6>
+
+                    <?php if($row['id_user'] ==  $_SESSION['userId']) :?>
+        
+                    <a type="button" id="editar" class="btn btn-warning text-white" href="editar_duvida.php?id=<?php echo $row['id_duvida'] ?>"> Editar</a>
+                    <?php endif ?>
+                    <?php if($_SESSION['userStatus'] ==  'admin' || $row['id_user'] ==  $_SESSION['userId']) :?>
+        
+                      <a type="button" id="delete-duvida-btn" name="delete-duvida-btn" class="btn btn-danger text-white" href="../includes/delete_data_duvidas.php?delete=sim&id=<?php echo $row['id_duvida'] ?>"> Eliminar</a>
+                    <?php endif ?>
                   </div>
                     <div class="card-body">
 
