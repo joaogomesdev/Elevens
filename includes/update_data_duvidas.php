@@ -16,6 +16,7 @@
       $tituloP = $_POST['titulo'];
       $categoriaP =  $_POST['categoria'];
       $descricaoP =  $_POST['descricao'];
+      $confirmBox = $_POST['confirmBox'];
     
     
     
@@ -24,7 +25,13 @@
             header("Location: menu_duvidas.php?error=emptyfields&");
             exit();
         }
-    
+        
+        if(empty($confirmBox) ){
+
+            header("Location: ../help/menu_duvidas.php?noConfirmBox");
+            exit();
+
+        }
         else {
     
             $sql = 'SELECT * from duvidas where id_duvida=?';
@@ -64,10 +71,10 @@
                     else{
                      
         
-                        mysqli_stmt_bind_param($stmt, 'ssss',  $tituloBD, $categoriaBD, $descricaoBD,$id_descricao);
+                        mysqli_stmt_bind_param($stmt, 'ssss',  $tituloP, $categoriaP, $descricaoP,$id_duvidaP);
                         mysqli_stmt_execute($stmt);
         
-                        header("Location: consultar_duvida.php?registo=success");
+                        header("Location: ../help/consultar_duvida.php?edit=success");
                         exit();
                     }
                 }

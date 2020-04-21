@@ -7,6 +7,15 @@ if(!isset($_SESSION['userId'])){
   header("Location: ../autenticar.php?acesso=negado");
   exit();
 }
+require '../includes/db.inc.php';
+
+$id_duvida = $_GET['id'];
+
+$sql = "SELECT * FROM duvidas WHERE  id_duvida = $id_duvida";
+    $result = mysqli_query( $conn, $sql);
+    $resultCheck = mysqli_num_rows($result);
+
+
 ?>
 
 
@@ -43,16 +52,16 @@ if(!isset($_SESSION['userId'])){
             <div class="card-body">
               <div class="row">
                 <div class="col">
-                  
+                <?php foreach($result as $row) : ?>
                   <form action="../includes/update_data_duvidas.php?id=<?php echo $id_duvida?>" method="post">
                     <div class="form-group" >
                       <label>Título</label>
-                      <input name="titulo" type="text" class="form-control" value="" placeholder="Título">
+                      <input name="titulo" type="text" class="form-control" value="<?php echo $row['titulo']?>" placeholder="Título">
                     </div>
                     
                     <div class="form-group">
                       <label>Categoria</label>
-                      <select name="categoria" class="form-control" value="">
+                      <select name="categoria" class="form-control" selected="<?php echo $row['categoria']?>">
                         <option>Horários</option>
                         <option>Menus</option>
                         <option>Atendimento</option>
@@ -63,24 +72,23 @@ if(!isset($_SESSION['userId'])){
                     
                     <div class="form-group">
                       <label>Dúvida</label>
-                      <textarea name="descricao" class="form-control" rows="3" value=""></textarea>
+                      <input name="descricao" class="form-control" rows="3" value="<?php echo $row['descricao']?>"></input>
                     </div>
-                    <div class="form-group">
-                    <label>Password</label>
-                    <input name="password" id="password" type="password" class="form-control"  placeholder="Insira a sua Password para confirmar">
-
+                    <div class="form-group form-check">
+                      <input type="checkbox" class="form-check-input" name="confirmBox" id="confirmBox">
+                      <label class="form-check-label" for="confirmBox">Marque para confirmar</label>
                     </div>
-
                     <div class="row mt-5">
                       <div class="col-6">
                         <a class="btn btn-lg btn-success btn-block" href="menu_duvidas.php">Voltar</a>
                       </div>
-
+  
                       <div class="col-6">
                         <button  class="btn btn-lg btn-outline-info btn-block" name="edit-duvida-submit" type="submit">Editar</button>
                       </div>
                     </div>
                   </form>
+                  <?php endforeach ?>
 
                 </div>
               </div>

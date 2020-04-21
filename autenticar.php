@@ -64,6 +64,17 @@ session_start();
 
 
                   <?php endif ?>
+                  <?php if(  isset($_GET['desativado'])  ) : ?>
+
+
+                    <div class="alert alert-danger" role="alert">
+
+                        Utilizador(a) desativado(a) :(
+
+                    </div>
+
+
+                  <?php endif ?>
 
                   <?php if(  isset($_GET['RegisterSuccess'])  ) : ?>
 

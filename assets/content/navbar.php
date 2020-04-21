@@ -21,8 +21,14 @@
                                 }
                                 else{
         
+                                    if(isset($_SESSION['userId']) &&  $_SESSION['userStatus'] == 'admin'){
+
+                                        echo  ' <li class="nav-item"><a class="btn btn-secondary text-white pt-2 mr-2 pb-2 nav-link js-scroll-trigger" href="admin/index.php">Admin</a></li>';
+
+                                    }
                                    
-                                    echo  ' <li class="nav-item"><a class="btn btn-warning text-white pt-2 pb-2 nav-link js-scroll-trigger" href="#contact">'.$_SESSION['userName'].'</a></li>';
+                                   
+                                    echo  ' <li class="nav-item"><a class="btn btn-warning text-white pt-2 pb-2 nav-link js-scroll-trigger" href="profile.php">'.$_SESSION['userName'].'</a></li>';
 
                                     echo  '<li class="nav-item"><a class="btn btn-primary pt-2 pb-2 pr-3 text-white ml-2 mr-6 nav-link js-scroll-trigger" href="logout.php">Sair</a></li>';
         

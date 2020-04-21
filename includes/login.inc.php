@@ -40,14 +40,20 @@ if(isset($_POST['login-submit'])){
                     header("Location: ../autenticar.php?passErrada");
                     exit();
                 }
+                if($row['acount_status'] == 'desativado'){
+
+                    header("Location: ../autenticar.php?desativado");
+                    exit();
+                }
 
                 else if($pwdCheck == true){
 
                         session_start();
                         $_SESSION['userId'] = $row['id'];
                         $_SESSION['userName'] = $row['username'];
-                        $_SESSION['userEmail'] = $row['mail'];
+                        $_SESSION['userEmail'] = $row['email'];
                         $_SESSION['userStatus'] = $row['user_status'];
+                        $_SESSION['acountStatus'] = $row['acount_status'];
 
                         header('Location:  ../index.php?login=sucess');
                         exit();
