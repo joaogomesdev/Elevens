@@ -34,9 +34,9 @@ if(isset($_POST['login-submit'])){
 
             if($row = mysqli_fetch_assoc($result)){///ver se coicidem 
 
-                $pwdCheck = password_verify($password, $row['password']);// ve se as pwd sao iguais
+                $pwdCheck = md5($password);// ve se as pwd sao iguais
                
-                if($pwdCheck == false){
+                if($pwdCheck != $row['password']){
                     header("Location: ../autenticar.php?passErrada");
                     exit();
                 }

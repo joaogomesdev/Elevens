@@ -53,7 +53,7 @@ if(isset($_POST['register-submit'])){
                     exit();
                 }
                 else{
-                    $incriptedPwd = password_hash($password, PASSWORD_DEFAULT);
+                    $incriptedPwd = md5($password);
     
                     mysqli_stmt_bind_param($stmt, 'sss', $username, $email, $incriptedPwd);
                     mysqli_stmt_execute($stmt);

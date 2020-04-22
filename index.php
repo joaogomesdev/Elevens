@@ -237,7 +237,7 @@ session_start();
          <section class="page-section bg-dark text-white">
             <div class="container text-center">
                 <h2 class="mb-4">Veja já o nosso <span>delicioso</span> menu!</h2>
-                <a class="btn btn-light btn-xl" href="https://startbootstrap.com/themes/creative/">Fazer Reserva</a>
+                <a class="btn btn-light btn-xl" href="">Fazer Reserva</a>
             </div>
         </section> 
 

@@ -19,7 +19,7 @@
     
         if( empty($confirmPassword)){
             
-            header("Location: ../edit_profile.php?error=emptyfieldsPass");
+            header("Location: ../profile.php?error=emptyfieldsPass");
             exit();
         }
         
@@ -34,14 +34,23 @@
                 header("Location: ../profile.php?error=sqlierror"); 
                 exit();
             }
+
+           
+
             else {
     
                 mysqli_stmt_bind_param($stmt, "s" , $userId );
                 mysqli_stmt_execute($stmt);
-                mysqli_stmt_store_result($stmt);
-                $result = mysqli_stmt_num_rows($stmt);
+                $result =  mysqli_stmt_get_result($stmt);
 
-
+        if($row = mysqli_fetch_assoc($result)){///ver se coicidem 
+            
+                $pass = md5($confirmPassword);
+               
+                if($pass != $row['password']){
+                    header("Location: ../profile.php?passErrada");
+                    exit();
+                }
 
                 if($result == 0){
                     header("Location: ../profile.php?passErrada");
@@ -53,6 +62,7 @@
                     header("Location: ../profile.php?DateMaiorNow");
                     exit();
                 }
+                
                 
         
                
@@ -87,7 +97,7 @@
                      }
 
                 }
-                
+            }
             
             }
 

@@ -1,7 +1,7 @@
 <?php
 
 
-    if(isset($_POST['colocar-duvida-submit'])){
+    if(isset($_POST['reservar-mesa-submit'])){
 
         session_start();
 
@@ -9,59 +9,61 @@
 
       
         
-      $userid = $_SESSION['userId'];
-      $titulo = $_POST['titulo'];
-      $categoria =  $_POST['categoria'];
-      $descricao =  $_POST['descricao'];
+      $userId = $_SESSION['userId'];
+      $clientName = $_POST['name'];
+      $nPessoas = $_POST['n_pessoas'];
+      $date = $_POST['data_reserva'];
+      $time = $_POST['time_reserva'];
+      $categoria = $_POST['categoria'];
+      $clientEmail = $_POST['email'];
+      $clientPhone = $_POST['tele'];
+      $observacoes = $_POST['observacoes'];
     
     
     
-        if( empty($titulo) || empty($categoria) || empty($descricao)){
+        if( empty($clientName) || empty($date) || empty($time) || empty($categoria) || empty($clientEmail) || empty($clientPhone) || empty($observacoes) ){
             
-            header("Location: menu_duvidas.php?error=emptyfields&");
+            header("Location: menu_reservas.php?error=emptyfields&");
             exit();
         }
     
         else {
     
-            $sql = "SELECT 	userId, titulo  FROM duvidas WHERE userId=? and titulo=? ";
+            $sql = "SELECT 	*  FROM reservas WHERE  id_client=? ";
             $stmt = mysqli_stmt_init($conn);
         
             if(!mysqli_stmt_prepare($stmt , $sql)){
 
-                header("Location: menu_duvidas.php?error=sqlierror"); 
+                header("Location: menu_reservas.php?error=sqlierror"); 
                 exit();
             }
             else {
     
-                mysqli_stmt_bind_param($stmt, "ss" , $userid, $titulo);
+                mysqli_stmt_bind_param($stmt, "s" , $userId);
                 mysqli_stmt_execute($stmt);
                 mysqli_stmt_store_result($stmt);
                 $result = mysqli_stmt_num_rows($stmt);
 
-                if($result > 0){
-                    header("Location: .colocar_duvida.php?error=duvidaTaken");
-                    exit();
-                 }
+              
 
-                else{
-                    $sql = "INSERT INTO duvidas (userid, titulo ,categoria, descricao) VALUES ( ? , ? , ? ,?)";
+              
+                    $sql = "INSERT INTO reservas (id_client, client_name ,date_reserva, time_reserva, categoria, client_email, client_phone, observacoes) VALUES ( ? , ? , ? ,?, ? ,? ,?, ?)";
                     $stmt = mysqli_stmt_init($conn);
         
                     if(!mysqli_stmt_prepare($stmt , $sql)){
-                        header("Location: menu_duvidas.php?eraaaaaror=sqlierror");
+                        header("Location: menu_reservas.php?eraaaaaror=sqlierror");
                         exit();
                     }
                     else{
                      
         
-                        mysqli_stmt_bind_param($stmt, 'ssss',  $userid, $titulo, $categoria , $descricao);
+                        mysqli_stmt_bind_param($stmt, 'ssssssss',$userId, $clientName, $date, $time, $categoria, $clientEmail,   $clientPhone, $observacoes );
                         mysqli_stmt_execute($stmt);
         
-                        header("Location: consultar_duvida.php?registo=success");
+                        header("Location: consultar_reservas.php?registo=success");
                         exit();
                     }
-                }
+                
             }
         }
         
@@ -70,7 +72,7 @@
     }
     
     else{
-        header("Location:   colocar_duvida.php");
+        header("Location:   menu_reservas.php");
         exit();
     }
     

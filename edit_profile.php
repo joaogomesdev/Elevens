@@ -229,6 +229,52 @@ $sql = "SELECT * FROM users WHERE  id = $id_user";
 
 
 
+  <?php foreach($result as $row) : ?>
+  <div class="container emp-profile">
+          
+                <div class="row">
+                  
+                    <div class="col-md">
+                     
+                        <span><h3>Palavra Passe</h3></span>
+                    <div>
+                    </div>
+                    <form action="includes/editar_pass.inc.php?id=<?php echo $row['id']?>" method="POST">
+             <div class="row">
+                    <div class="col-md-4">
+                    <div class="form-group">
+                      <label>Password Antiga</label>
+                      <input name="passwordAntiga" id="passwordAntiga" type="password" class="form-control">
+                    </div>
+                    </div>
+                    <div class="col-md-4">
+                    <div class="form-group">
+                      <label>Password Nova</label>
+                      <input name="passwordNova" id="passwordNova" type="password" class="form-control" >
+                    </div>
+                    </div>
+                    <div class="col-md-4">
+                    <div class="form-group">
+                        <label></label>
+                        <button class="btn btn-outline-warning btn-block mt-1" name="edit-password-submit" id="edit-profile-submit" type="submit">Confirmar</button>
+                    </div>
+                    </div>
+
+             </div>
+           
+
+                   
+                  </form>
+                        </div>
+                    </div>
+                </div>
+            </form>           
+        </div>
+
+        <?php endforeach ?>
+
+
+
 
 
 

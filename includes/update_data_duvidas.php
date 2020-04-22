@@ -32,6 +32,7 @@
             exit();
 
         }
+        
         else {
     
             $sql = 'SELECT * from duvidas where id_duvida=?';
