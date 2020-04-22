@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 21-Abr-2020 às 04:07
+-- Tempo de geração: 22-Abr-2020 às 02:31
 -- Versão do servidor: 10.4.11-MariaDB
 -- versão do PHP: 7.4.4
 
@@ -43,10 +43,7 @@ CREATE TABLE `duvidas` (
 --
 
 INSERT INTO `duvidas` (`id_duvida`, `id_user`, `username`, `titulo`, `categoria`, `descricao`, `create_at`, `update_at`) VALUES
-(9, 12, 'bruno', 'Jantar', 'Horários', 'Apartir de que horas servem jantar?', '2020-04-20 22:57:01', '2020-04-20 22:57:01'),
-(11, 15, 'Daniel', 'Sou gay?', 'Outro', 'será que sou gay?', '2020-04-20 23:02:44', '2020-04-20 23:02:44'),
-(12, 14, 'Dara', 'Sangria', 'Menus', 'Tem sangria?', '2020-04-20 23:07:27', '2020-04-20 23:07:27'),
-(21, 13, 'João Gomes', 'Dara', 'Horários', '1asdasd', '2020-04-21 02:01:22', '2020-04-21 02:01:22');
+(26, 24, 'Dara', 'Dara', 'Horários', 'ashdiuyhasioudhaisuhdiu', '2020-04-21 22:34:50', '2020-04-21 22:34:50');
 
 -- --------------------------------------------------------
 
@@ -68,7 +65,38 @@ CREATE TABLE `pass_reset` (
 
 INSERT INTO `pass_reset` (`passResetId`, `passResetEmail`, `passResetSelector`, `passResetToken`, `passResetExpires`) VALUES
 (3, '', 'd205c4b5aa438140', '$2y$10$zNAhiH.Si9UDdf8aHgJJIuAy2/95U.JIraLfGdkHOsdNyOaEjntB6', '1587165022'),
-(6, 'joaopfg.2002@gmail.com', '076b165b44f58016', '$2y$10$dquBxJlo8aLxrqBUQJfTT.Bw2hAeuk1crc1pZW2f30JADU/7EQ69C', '1587165201');
+(7, 'joaopfg.2002@gmail.com', 'e5d5f7d0b7e8032a', '$2y$10$v5ItVvD/3yMorOBo0GysNeeAJbHI.JLE3onqK.AyOokK4XbgFyaeS', '1587516780'),
+(8, 'joaogomes.emails@gmail.com', '587e2df9fdc09dd9', '$2y$10$arb/7nJhle4eLRWFAyFeiuzII5tkG3RvbwXP./NIyX5uiaWYO1qWa', '1587516829');
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `reservas`
+--
+
+CREATE TABLE `reservas` (
+  `id_reserva` int(11) NOT NULL,
+  `id_client` int(11) NOT NULL,
+  `client_name` varchar(50) NOT NULL,
+  `number_pessoas` int(11) NOT NULL,
+  `date_reserva` date NOT NULL,
+  `time_reserva` time NOT NULL,
+  `categoria` tinytext NOT NULL,
+  `client_email` varchar(255) NOT NULL,
+  `client_phone` varchar(9) NOT NULL,
+  `observacoes` longtext NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `status` text NOT NULL DEFAULT 'pendente'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Extraindo dados da tabela `reservas`
+--
+
+INSERT INTO `reservas` (`id_reserva`, `id_client`, `client_name`, `number_pessoas`, `date_reserva`, `time_reserva`, `categoria`, `client_email`, `client_phone`, `observacoes`, `created_at`, `updated_at`, `status`) VALUES
+(1, 25, 'João Gomes', 0, '2200-02-15', '15:21:00', 'Outro', 'gustavo@gmail.com', '915248736', 'sou gay?', '2020-04-21 23:58:38', '2020-04-21 23:58:38', 'pendente'),
+(2, 24, 'Dara ', 0, '2002-04-18', '15:04:00', 'Jogo', 'dara@gmail.com', '23131231', 'askuhdhjkabhsdjghasbdh', '2020-04-22 00:19:39', '2020-04-22 00:19:39', 'pendente');
 
 -- --------------------------------------------------------
 
@@ -79,20 +107,25 @@ INSERT INTO `pass_reset` (`passResetId`, `passResetEmail`, `passResetSelector`, 
 CREATE TABLE `users` (
   `id` int(11) NOT NULL,
   `username` tinytext NOT NULL,
+  `age` int(11) NOT NULL,
   `email` tinytext NOT NULL,
   `password` longtext NOT NULL,
-  `user_status` varchar(10) NOT NULL DEFAULT 'user'
+  `phone` int(9) DEFAULT NULL,
+  `born_date` date DEFAULT NULL,
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `user_status` varchar(10) NOT NULL DEFAULT 'user',
+  `acount_status` text NOT NULL DEFAULT 'ativo'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Extraindo dados da tabela `users`
 --
 
-INSERT INTO `users` (`id`, `username`, `email`, `password`, `user_status`) VALUES
-(12, 'bruno', 'bruno@gmail.com', '$2y$10$b6wYNAi/JtwF6coEQcuQ7uj05eK.kdMXDuEBIthNBM8ACM/BtTdUK', 'user'),
-(13, 'João Gomes', 'joaopfg.2002@gmail.com', '$2y$10$wh6Z1Db6iutkYcQa80BXQOX3q8.jzRDp7ZRYVEtxet13nXCamb.si', 'admin'),
-(14, 'Dara', 'dara@gmail.com', '$2y$10$ocrdhbHLRSvPDq1/E4kJj.OP5L6J2MHACYGd6NpI5vfznW8CCzalK', 'user'),
-(15, 'Daniel', 'daniel@gmail.com', '$2y$10$ZH822ffJXvFJlXIHUfPhM.7eMc3kA/utCWPZ/LbdLXgSsg.XGOflK', 'user');
+INSERT INTO `users` (`id`, `username`, `age`, `email`, `password`, `phone`, `born_date`, `updated_at`, `created_at`, `user_status`, `acount_status`) VALUES
+(23, 'João Gomes', 0, 'joaopfg.2002@gmail.com', '$2y$10$9Jsnk3QR4UP8ZD3edtduHuSs.bFCBsyE3gfWInbf7F1YSlTIZQU1S', NULL, NULL, '2020-04-21 22:38:29', '2020-04-21 20:09:37', 'admin', 'ativo'),
+(24, ' Dara', 18, 'dara@gmail.com', '$2y$10$A5.HjQxxWUE9OfPCTKSyV.8JkU67Es32xKdNsQe7tUdAgSY7D7LMm', 963258741, '2001-04-24', '2020-04-21 22:36:26', '2020-04-21 22:15:43', 'user', 'ativo'),
+(25, ' Gustavo Rocha', 17, 'gustavo@gmail.com', '$2y$10$iiDEhNNwTm3rK43OrheU9eEkmRC.S7oJRXoFYvcuOlB5LBhVQoQJ6', 915478632, '0021-02-15', '2020-04-21 22:52:18', '2020-04-21 22:16:05', 'user', 'ativo');
 
 --
 -- Índices para tabelas despejadas
@@ -112,6 +145,13 @@ ALTER TABLE `pass_reset`
   ADD PRIMARY KEY (`passResetId`);
 
 --
+-- Índices para tabela `reservas`
+--
+ALTER TABLE `reservas`
+  ADD PRIMARY KEY (`id_reserva`),
+  ADD KEY `id_client` (`id_client`);
+
+--
 -- Índices para tabela `users`
 --
 ALTER TABLE `users`
@@ -125,19 +165,25 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT de tabela `duvidas`
 --
 ALTER TABLE `duvidas`
-  MODIFY `id_duvida` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id_duvida` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT de tabela `pass_reset`
 --
 ALTER TABLE `pass_reset`
-  MODIFY `passResetId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `passResetId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT de tabela `reservas`
+--
+ALTER TABLE `reservas`
+  MODIFY `id_reserva` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de tabela `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- Restrições para despejos de tabelas
@@ -148,6 +194,12 @@ ALTER TABLE `users`
 --
 ALTER TABLE `duvidas`
   ADD CONSTRAINT `duvidas_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `users` (`id`);
+
+--
+-- Limitadores para a tabela `reservas`
+--
+ALTER TABLE `reservas`
+  ADD CONSTRAINT `reservas_ibfk_1` FOREIGN KEY (`id_client`) REFERENCES `users` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
