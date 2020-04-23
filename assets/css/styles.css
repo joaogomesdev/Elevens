@@ -76,6 +76,7 @@ body {
 
 /* width */
 ::-webkit-scrollbar {
+ 
   width: 11px;
 }
 
@@ -86,6 +87,7 @@ body {
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
+  border-radius: 30px;
   background: rgb(236, 183, 77);
 }
 

@@ -159,6 +159,16 @@ session_start();
                         </div> 
 
                         <?php endif ?>
+                        <?php if( isset($_GET['passRepass']) ) : ?>
+
+
+                        <div class="alert alert-danger" role="alert">
+
+                          Confirme a senha corretamente !
+
+                        </div> 
+
+                        <?php endif ?>
                         <?php if( isset($_GET['userTakenRegister'])  ) : ?>
 
 

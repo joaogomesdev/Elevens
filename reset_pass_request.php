@@ -29,9 +29,13 @@ session_start();
       <a class="navbar-brand" href="index.php">
 
           Elevens Caffé
-
-
       </a>
+
+      <ul class="navbar-nav ml-auto my-2 my-lg-0">
+
+      <li class="nav-item"><a class="btn btn-danger pl-2 pr-2 text-white  nav-link " href="index.php">Home</a></li>
+
+</ul>
 
     </nav>
 
@@ -50,26 +54,28 @@ session_start();
               <div class="card-body">
 
                  
-                <form action="includes/recover_password.inc.php" method="POST">
+                <form action="reset_pass/processa_envio.php" method="POST">
                   <div class="form-group">
                     <input name="email" id="email" type="email" class="form-control"  placeholder="Insira o seu email...">
                   </div>
-                  <?php 
+                
+<?php
+                           if(isset($_GET['reset'])){
+                               if($_GET['reset'] == 'success'){
 
-                            if(isset($_GET['reset'])){
-                              if($_GET['reset'] == 'success'){
+                                 echo '<div class="alert alert-success" role="alert">
 
-                                echo '<div class="alert alert-success" role="alert">
+                                 Por favor consulte o seu email
 
-                                Por favor consulte o seu email
+                                   </div>';
+                               }
+                             } 
 
-                                  </div>';
-                              }
-                            }
+                             ?>
 
 
-                            ?>
-                  <button class="btn btn-lg btn-success btn-block" name="recoverPassword-submit" id="request-reset-submit" type="submit">Receber Password E-mail</button>
+                           
+                  <button class="btn btn-lg btn-success btn-block" name="recoverPassword-submit" id="request-reset-submit" type="submit">Receber password  no E-mail</button>
                 </form>
          
               </div>
