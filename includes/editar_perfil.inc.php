@@ -14,6 +14,7 @@
       $userPhone = $_POST['phone'];
       $userBornDate = $_POST['born_date'];
       $confirmPassword = $_POST['passwordConfirm'];
+      $profileImg = $_POST['profile_image'];
     
     
     
@@ -44,9 +45,11 @@
                 $result =  mysqli_stmt_get_result($stmt);
 
         if($row = mysqli_fetch_assoc($result)){///ver se coicidem 
-            
+
                 $pass = md5($confirmPassword);
-               
+
+           
+
                 if($pass != $row['password']){
                     header("Location: ../profile.php?passErrada");
                     exit();

@@ -71,7 +71,24 @@ session_start();
                                }
                              } 
 
+                             
+                           if(isset($_GET['emailNo'])){
+                              
+
+                                 echo '<div class="alert alert-danger" role="alert">
+
+                                 Email não registado
+
+                                   </div>';
+                               
+                             } 
+
                              ?>
+                              <?php if(  isset($_GET['success'])  ) : ?>
+
+                            <div class="alert alert-success" role="alert"> Sucesso! Consulte o seu email ! </div>
+                            <a class="btn btn-lg btn-info btn-block"  href="autenticar.php" >Autenticar</a>
+                            <?php endif ?>
 
 
                            

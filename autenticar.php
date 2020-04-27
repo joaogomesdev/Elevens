@@ -187,6 +187,8 @@ session_start();
                           </div>
 
                           <?php endif ?>
+
+                         
                           
                 <form action="includes/singup.inc.php" method="POST">
                   <div class="form-group">

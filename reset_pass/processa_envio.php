@@ -96,6 +96,12 @@
     $nregistos=mysqli_num_rows($result);
     $registo=mysqli_fetch_assoc($result);
 
+if($nregistos == 0){
+
+    header("Location: ../reset_pass_request.php?emailNo");
+    exit();
+}
+
 if($nregistos==1){
     
     //  Este email existe na base de dados!";
@@ -114,12 +120,23 @@ $result=mysqli_query($conn,$sql);
 
     $mensagem = new Mensagem();
     $mensagem->__set('para' , $_POST['email']);
-    $mensagem->__set('assunto' , "Recuperação de Password");
-    $mensagem->__set('mensagem' , "Solicitou a requisição da sua password.
-    A sua nova password é: $password;
+    $mensagem->__set('assunto' , "Ellevens Staff - Apoio ao cliente");
+    $mensagem->__set('mensagem' , "
+    <h1>Solicitou a requisição da sua password?</h1><br>
+    <p><h2> A sua nova password é:</h2> <h3>$password</h3> </p>
+   
+    <h3>Siga estes paços :
+    <ul>
+        <li> Copie a senha recebida neste email </li>
+        <li> Faça login no site Ellevens </li>
+        <li> Mude a sua senha em editar perfil</li>
+        <li> <strong>ATENÇÂO!!Mude a sua senha segura e que se lembre</strong></li>
+        <li> Aproveite os seviços enquanto um cliente Ellevens Caffé</li>
+    </ul>
+    </h3>
 
-    Por favor, não responda a este email. A sua única função é informar.
-    Atenciosamente, Ellevens Staff");
+    <strong>Por favor, não responda a este email. A sua única função é informar</strong><br><br>
+    <p>Atenciosamente, Ellevens Staff</P>");
 
 
 }
@@ -139,7 +156,9 @@ $result=mysqli_query($conn,$sql);
     $mail->SMTPDebug = false;                      // Enable verbose debug output
     $mail->isSMTP();                                            // Send using SMTP
     $mail->Host       = 'smtp.gmail.com';                    // Set the SMTP server to send through
-    $mail->SMTPAuth   = true;                                   // Enable SMTP authentication
+    $mail->SMTPAuth   = true;     
+    $email->email->setLanguage = "br";    
+    $email->email->CharSet = "utf-8";                          // Enable SMTP authentication
     $mail->Username   = 'joaogomes.emails@gmail.com';                     // SMTP username
     $mail->Password   = 'joao_gomes!2020';                               // SMTP password
     $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;         // Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` also accepted
@@ -173,7 +192,7 @@ $result=mysqli_query($conn,$sql);
 
     $mail->send();
     $mensagem->status['codigo_status'] = 1;
-    $mensagem->status['descricao_status'] = 'E-Mail enviado com secesso';
+    $mensagem->status['descricao_status'] = 'E-Mail enviado com secesso, consulte o seu E-Mail';
 
    
 
@@ -184,76 +203,11 @@ $result=mysqli_query($conn,$sql);
 
     //alguma lógica que armazene o erro para posterior análise por parte do programador
 }
-?>
+
  
 
-
-<html>
-  <head>
-    <meta charset="utf-8" />
-    <title> Elevens Caffé</title>
-
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
-  <style>
-
-.card-login {
-    padding: 30px 0 0 0;
-    width: 350px;
-    margin: 0 auto;
-  }
-
-  </style>
-
-  </head>
-
-  <body>
-
-  <nav class="navbar navbar-dark bg-dark">
-      <a class="navbar-brand" href="index.php">
-
-          Elevens Caffé
-      </a>
-
-      <ul class="navbar-nav ml-auto my-2 my-lg-0">
-
-      <li class="nav-item"><a class="btn btn-primary pt-2 pb-2 pr-3 text-white ml-2 mr-6 nav-link js-scroll-trigger" href="../index.php">Home</a></li>
-
-</ul>
-
-    </nav>
-
-    <body>
-
-<div class="container">
-
-
-<div class="py-3 text-center">
-<?php if($mensagem->status['codigo_status'] == 1) : ?>
-
-<div class="container">
-    <h1 class="display-4 text-success">Sucesso</h1>
-    <p><?= $mensagem->status['descricao_status'] ?></p>
-    <a href="../autenticar.php" class="btn btn-success btn-lg mt-5 text-white">Autenticar</a>
-</div>
-
-<?php endif ?>     
-
-    <?php if($mensagem->status['codigo_status'] == 2) : ?>
-
-    <div class="container">
-        <h1 class="display-4 text-danger">Ups!</h1>
-        <p><?= $mensagem->status['descricao_status'] ?></p>
-        <a href="../autenticar.php" class="btn btn-danger btn-lg mt-5 text-white">Tentar Outra Vez</a>
-    </div>
-
-    <?php endif ?>     
-</div>
-  
-</div>
-
-</body>
-</html>
+ header("Location: ../reset_pass_request.php?success");
+    exit();
 
 
 

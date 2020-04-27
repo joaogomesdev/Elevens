@@ -51,8 +51,14 @@ $sql = "SELECT * FROM users ";
     <?php include "../assets/content/navbar_admin.php" ?>
 
         <!-- Masthead-->
-    <div class="container-fluid">
+  
 
+  
+    <div class="container-fluid">
+    <div class="row">
+        <div class="col-md col-sm-6">
+
+            
         <table class="table table-striped table-bordered">
         
             <thead>
@@ -87,13 +93,20 @@ $sql = "SELECT * FROM users ";
                     <td><?= $row['updated_at']?></td>
                     <td><?= $row['created_at']?></td>
                     <td><?= $row['user_status']?></td>
-                    <td><?= $row['acount_status']?></td>
+                 
 
-                    <?php if($row['user_status'] === 'user') : ?>
-                       <td> <a type="button" id="promover-user-btn" name="promover-user-btn" class="btn btn-warning text-white" href="../includes/promover_user.php?promover=sim&id=<?php echo $row['id'] ?>">Promover</a></td>
+                    <?php if($row['acount_status'] === 'ativo') : ?>
+                       <td class="align-middle"> <img src="../assets/img/certo.png" width="30" height="30"></td>
                     <?php endif ?>
+                    <?php if($row['acount_status'] === 'desativado') : ?>
+                        <td> <img src="../assets/img/cruz.png" width="30" height="30"></td>
+                    <?php endif ?>
+
                     <?php if($row['user_status'] === 'admin') : ?>
-                       <td> <a type="button" id="promover-user-btn" name="promover-user-btn" class="btn btn-warning text-white" href="../includes/despromover_user.php?despromover=sim&id=<?php echo $row['id'] ?>">Despromover</a></td>
+                       <td> <a type="button" id="despromover-user-btn" name="despromover-user-btn" class="btn btn-warning text-white" href="../includes/despromover_user.php?despromover=sim&id=<?php echo $row['id'] ?>">Despromover</a></td>
+                    <?php endif ?>
+                    <?php if($row['user_status'] === 'user') : ?>
+                       <td> <a type="button" id="promover-user-btn" name="promover-user-btn" class="btn btn-warning text-white" href="../includes/promover_user.php?despromover=sim&id=<?php echo $row['id'] ?>">Promover</a></td>
                     <?php endif ?>
                  
                     <?php if($row['acount_status'] === 'ativo') : ?>
@@ -106,10 +119,12 @@ $sql = "SELECT * FROM users ";
                 <?php endforeach ?>
             </tbody>
         </table>
+    </div>
 
 
         <!-- Footer-->
         
+    </div>
     </div>
 
 
