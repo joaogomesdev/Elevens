@@ -2,6 +2,21 @@
 
 session_start();
 
+
+include_once "includes/db.inc.php";
+
+$sql = "SELECT * FROM galeria ORDER BY orderFoto DESC";
+
+$stmt = mysqli_stmt_init($conn);
+if(!mysqli_stmt_prepare($stmt, $sql)){
+
+    echo "SSQL ERRO NO INDEX";
+
+}else{
+    mysqli_stmt_execute($stmt);
+    $result = mysqli_stmt_get_result($stmt);
+
+}
 ?>
 
 
@@ -30,6 +45,23 @@ session_start();
         <link href="assets/css/styles.css" rel="stylesheet" />
 
     </head>
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
     <!---- Icon admin Login -->
     <?php
     if(isset($_SESSION['userName'])){
@@ -170,68 +202,126 @@ session_start();
             </div>
         </section>
 
-        <!-- Portfolio section-->
+        <section class="page-section bg-dark text-white">
+            <div class="container text-center">
+
+            <hr class="featurette-divider">
+
+                        <div class="row featurette">
+                        <div class="col-md-7">
+                            <h2 class="featurette-heading">First featurette heading. <span class="text-muted">It’ll blow your mind.</span></h2>
+                            <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+                        </div>
+                        <div class="col-md-5">
+                            <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 500x500"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"/><text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text></svg>
+                        </div>
+                        </div>
+
+                        <hr class="featurette-divider">
+
+                        <div class="row featurette">
+                        <div class="col-md-7 order-md-2">
+                            <h2 class="featurette-heading">Oh yeah, it’s that good. <span class="text-muted">See for yourself.</span></h2>
+                            <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+                        </div>
+                        <div class="col-md-5 order-md-1">
+                            <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 500x500"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"/><text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text></svg>
+                        </div>
+                        </div>
+
+                        <hr class="featurette-divider">
+
+                        <div class="row featurette">
+                        <div class="col-md-7">
+                            <h2 class="featurette-heading">And lastly, this one. <span class="text-muted">Checkmate.</span></h2>
+                            <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+                        </div>
+                        <div class="col-md-5">
+                            <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 500x500"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"/><text x="50%" y="50%" fill="#aaa" dy=".3em"></text></svg>
+                        </div>
+                        </div>
+                
+            </div>
+        </section> 
+
+        <!-- Gallery section-->
 
         <section id="portfolio">
             <div class="container-fluid p-0">
+            <div class=" text-center ">
                 <div class="row no-gutters">
-                    <div class="col-lg-4 col-sm-6">
-                        <a class="portfolio-box" href="assets/img/portfolio/fullsize/1.jpg"
-                            ><img class="img-fluid" src="assets/img/portfolio/thumbnails/1.jpg" alt="" />
+
+                <?php while($row = mysqli_fetch_assoc($result)){ 
+
+                    echo '<div class="col-lg-4 col-sm-6">
+                            
+
+                        <a class="portfolio-box" href="assets/img/gallery/'. $row["imgFullNameFoto"] . '">
+                        <img width=”100px" height=”100px” class="img-fluid align-self-center" src="assets/img/gallery/'. $row["imgFullNameFoto"] . '" alt="" />
                             <div class="portfolio-box-caption">
-                                <div class="project-category text-white-50">Category</div>
-                                <div class="project-name">Project Name</div>
-                            </div></a
-                        >
-                    </div>
-                    <div class="col-lg-4 col-sm-6">
-                        <a class="portfolio-box" href="assets/img/portfolio/fullsize/2.jpg"
-                            ><img class="img-fluid" src="assets/img/portfolio/thumbnails/2.jpg" alt="" />
-                            <div class="portfolio-box-caption">
-                                <div class="project-category text-white-50">Category</div>
-                                <div class="project-name">Project Name</div>
-                            </div></a
-                        >
-                    </div>
-                    <div class="col-lg-4 col-sm-6">
-                        <a class="portfolio-box" href="assets/img/portfolio/fullsize/3.jpg"
-                            ><img class="img-fluid" src="assets/img/portfolio/thumbnails/3.jpg" alt="" />
-                            <div class="portfolio-box-caption">
-                                <div class="project-category text-white-50">Category</div>
-                                <div class="project-name">Project Name</div>
-                            </div></a
-                        >
-                    </div>
-                    <div class="col-lg-4 col-sm-6">
-                        <a class="portfolio-box" href="assets/img/portfolio/fullsize/4.jpg"
-                            ><img class="img-fluid" src="assets/img/portfolio/thumbnails/4.jpg" alt="" />
-                            <div class="portfolio-box-caption">
-                                <div class="project-category text-white-50">Category</div>
-                                <div class="project-name">Project Name</div>
-                            </div></a
-                        >
-                    </div>
-                    <div class="col-lg-4 col-sm-6">
-                        <a class="portfolio-box" href="assets/img/portfolio/fullsize/5.jpg"
-                            ><img class="img-fluid" src="assets/img/portfolio/thumbnails/5.jpg" alt="" />
-                            <div class="portfolio-box-caption">
-                                <div class="project-category text-white-50">Category</div>
-                                <div class="project-name">Project Name</div>
-                            </div></a
-                        >
-                    </div>
-                    <div class="col-lg-4 col-sm-6">
-                        <a class="portfolio-box" href="assets/img/portfolio/fullsize/6.jpg"
-                            ><img class="img-fluid" src="assets/img/portfolio/thumbnails/6.jpg" alt="" />
-                            <div class="portfolio-box-caption p-3">
-                                <div class="project-category text-white-50">Category</div>
-                                <div class="project-name">Project Name</div>
-                            </div></a
-                        >
-                    </div>
+                                <div class="project-category text-white-50">'. $row["categoriaFoto"] . '</div>
+                                <div class="project-name">'. $row["tituloFoto"] . '</div>
+                                <div class="project-category text-white-50 mt-2">'. $row["descFoto"] . '</div>
+                            </div></a>
+                    </div>';
+
+                 } ?>
+                 </div>
                 </div>
             </div>
+
         </section>
+<?php if($_SESSION['userStatus'] == 'admin') : ?>
+
+        <section class="page-section bg-warning text-white">
+           <div class="container text-center">
+           <?php if(  isset($_GET['typeFile'])  ) : ?>
+
+
+           <script> alert("Tipo de Arquivo Errado") </script>
+
+        <?php endif ?>
+               <h2 class="mb-4">Inserir Fotofrafias</h2>
+               
+               <form action="includes/gallery_upload.inc.php?insert=true" method="post" enctype="multipart/form-data">
+
+               <div class="form-row">
+                     <div class="form-group col-md-3">
+
+                            <label for="categoria"><span>Categoria</span></label>
+                            <input type="text" class="form-control" id="categoria" name="filecategoria" placeholder="Categoria"  >
+                                
+                    </div>
+
+                    <div class="form-group col-md-3">
+                             <label for="titulo"><span>Nome da Imagem</span></label>
+                             <input type="text" class="form-control" id="filename" name="filename" placeholder="Nome do Ficheiro"  >
+                                
+                     </div>
+
+                    <div class="form-group col-md-3">
+                             <label for="titulo"><span>Titulo</span></label>
+                             <input type="text" class="form-control" id="titulo" name="filetitulo" placeholder="Titulo da imagem"  >
+                                
+                     </div>
+                    <div class="form-group col-md-3">
+                             <label for="titulo"><span>Descrição</span></label>
+                             <input type="text" class="form-control" id="descricao" name="filedescricao" placeholder="Descrição da Imagem"  >
+                                
+                     </div>
+                    <div class="form-group col-md-3">
+                             <label for="image"><span>Image</span></label>
+                             <input type="file" class="form-control" id="file" name="file">
+                                
+                     </div>
+             </div>
+
+               <button class="btn btn-success btn-xl mt-4" name="submit-foto" href="" type="submit">Inserir Fotofrafia</button>
+               </form>
+           </div>
+       </section> 
+
+<?php endif ?>
 
         <!-- Call to action section-->
          <section class="page-section bg-dark text-white">
@@ -240,6 +330,8 @@ session_start();
                 <a class="btn btn-light btn-xl" href="">Fazer Reserva</a>
             </div>
         </section> 
+        
+       
 
         <!-- Contact section-->
         <section class="page-section" id="contact">
@@ -263,6 +355,7 @@ session_start();
                 </div>
             </div>
         </section>
+      
         <!-- Footer-->
        <?php include "assets/content/footer.php"?>
 

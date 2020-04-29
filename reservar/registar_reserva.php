@@ -47,7 +47,7 @@
               
 
               
-                    $sql = "INSERT INTO reservas (id_client, client_name ,date_reserva, time_reserva, categoria, client_email, client_phone, observacoes) VALUES ( ? , ? , ? ,?, ? ,? ,?, ?)";
+                    $sql = "INSERT INTO reservas (id_client, client_name ,number_pessoas, date_reserva, time_reserva, categoria, client_email, client_phone, observacoes) VALUES ( ? , ? , ? , ? ,?, ? ,? ,?, ?)";
                     $stmt = mysqli_stmt_init($conn);
         
                     if(!mysqli_stmt_prepare($stmt , $sql)){
@@ -57,7 +57,7 @@
                     else{
                      
         
-                        mysqli_stmt_bind_param($stmt, 'ssssssss',$userId, $clientName, $date, $time, $categoria, $clientEmail,   $clientPhone, $observacoes );
+                        mysqli_stmt_bind_param($stmt, 'sssssssss',$userId, $clientName,$nPessoas, $date, $time, $categoria, $clientEmail,   $clientPhone, $observacoes );
                         mysqli_stmt_execute($stmt);
         
                         header("Location: consultar_reservas.php?registo=success");
