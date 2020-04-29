@@ -93,22 +93,22 @@ if(!isset($_SESSION['userId'])){
                     <div class="card-header">
                     <h5> <?php echo $row['username']?> <span class="badge badge-primary"><?php echo $row['id_user']?></span></h6>
 
-                    <?php if($row['id_user'] ==  $_SESSION['userId']) :?>
-        
-                    <a type="button" id="editar" class="btn btn-warning text-white" href="editar_duvida.php?id=<?php echo $row['id_duvida'] ?>"> Editar</a>
-                    <?php endif ?>
-                    <?php if($_SESSION['userStatus'] ==  'admin' || $row['id_user'] ==  $_SESSION['userId']) :?>
-        
-                      <a type="button" id="delete-duvida-btn" name="delete-duvida-btn" class="btn btn-danger text-white" href="../includes/delete_data_duvidas.php?delete=sim&id=<?php echo $row['id_duvida'] ?>"> Eliminar</a>
-                    <?php endif ?>
                   </div>
-                    <div class="card-body">
-
-                      <h6 class="card-title"><?php echo $row['titulo']?></h5>
-                      <h7 class="card-subtitle mb-2 text-muted"><?php echo $row['categoria']?></h7>
-                      <p class="card-text"><?php echo $row['descricao']?></p>
-                      
-                    </div>
+                  <div class="card-body">
+                    
+                    <h6 class="card-title"><?php echo $row['titulo']?></h5>
+                    <h7 class="card-subtitle mb-2 text-muted"><?php echo $row['categoria']?></h7>
+                    <p class="card-text"><?php echo $row['descricao']?></p>
+                    
+                  </div>
+                  <?php if($row['id_user'] ==  $_SESSION['userId']) :?>
+      
+                  <a type="button" id="editar" class="btn btn-warning text-white" href="editar_duvida.php?id=<?php echo $row['id_duvida'] ?>"> Editar</a>
+                  <?php endif ?>
+                  <?php if($_SESSION['userStatus'] ==  'admin' || $row['id_user'] ==  $_SESSION['userId']) :?>
+      
+                    <a type="button" id="delete-duvida-btn" name="delete-duvida-btn" class="btn btn-danger text-white" href="../includes/delete_data_duvidas.php?delete=sim&id=<?php echo $row['id_duvida'] ?>"> Eliminar</a>
+                  <?php endif ?>
                   </div>
 
                       <?php endforeach ?>
