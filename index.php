@@ -47,20 +47,47 @@ if(!mysqli_stmt_prepare($stmt, $sql)){
     </head>
 
     <style>
-      .bd-placeholder-img {
-        font-size: 1.125rem;
-        text-anchor: middle;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        -ms-user-select: none;
-        user-select: none;
-      }
 
-      @media (min-width: 768px) {
-        .bd-placeholder-img-lg {
-          font-size: 3.5rem;
-        }
-      }
+/*--------------------*/
+/* ABOUT US */
+/*--------------------*/
+
+
+#mu-about {
+	background-color: #fff;
+	display: inline;
+	float: left;
+	width: 100%;
+}
+
+.mu-about-area {
+	display: inline;
+	float: left;
+	padding: 100px 0;
+	width: 100%;
+}
+
+.mu-about-left {
+	display: inline;
+	float: left;
+	width: 100%;
+}
+
+.mu-about-right {
+	display: inline;
+	float: left;
+	margin-top: 35px;
+	width: 130%;
+	background-color: #fff;
+	padding: 40px;
+	margin-left: -175px;
+	box-shadow: 3px 1px 18px -9px #000;
+}
+
+.mu-about-right p {
+	font-size: 15px;
+}
+
     </style>
     <!---- Icon admin Login -->
     <?php
@@ -121,7 +148,7 @@ if(!mysqli_stmt_prepare($stmt, $sql)){
                 </div>
             </div>
         </header>
-
+                            
         <!-- About section-->
         <?php
 
@@ -159,6 +186,54 @@ if(!mysqli_stmt_prepare($stmt, $sql)){
                         }
 
 ?>
+        	<section id="mu-about">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						<div class="mu-about-area">
+							<!-- Start Feature Content -->
+							<div class="row">
+								<div class="col-md-6">
+									<div class="mu-about-left">
+										<img class="" src="assets\img\portfolio\fullsize\1.jpg" alt="img">
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="mu-about-right">
+										<h2>About Our Agency</h2>
+										<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsam aliquam distinctio magni enim error commodi suscipit nobis alias nulla, itaque ex, vitae repellat amet neque est voluptatem iure maxime eius!</p>
+
+										<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus in accusamus qui sequi nisi, sint magni, ipsam, porro nesciunt id veritatis quaerat ipsum consequatur laborum, provident veniam quibusdam placeat quam?</p>
+                                        <div class="row">
+                                            <button class="btn btn-outline btn-secondary d-flex justify-content-end">Ver mais</button>
+                                        </div>
+									</div>
+								</div>
+                            </div>
+							<!-- End Feature Content -->
+
+                            <?php if($_SESSION['userStatus'] == 'admin') : ?>
+            
+                               
+                                <div class="container-fluid p-0">
+                <div class=" text-center ">
+            
+                            <button class="btn btn-success btn-xl mt-4" name="submit-foto" href="" type="submit">Adicionar Evento</button>
+                </div>
+                            </div>
+            
+                          
+                            <?php endif ?>
+						</div>
+					</div>
+                </div>
+                        
+			</div>
+        </section>
+        
+
+
+        
 
         <!-- Services section-->
         <section class="page-section" id="services">
@@ -202,47 +277,8 @@ if(!mysqli_stmt_prepare($stmt, $sql)){
             </div>
         </section>
 
-        <section class="page-section bg-dark text-white">
-            <div class="container text-center">
-
-            <hr class="featurette-divider">
-
-                        <div class="row featurette">
-                        <div class="col-md-7">
-                            <h2 class="featurette-heading">First featurette heading. <span class="text-muted">It’ll blow your mind.</span></h2>
-                            <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
-                        </div>
-                        <div class="col-md-5">
-                            <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 500x500"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"/><text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text></svg>
-                        </div>
-                        </div>
-
-                        <hr class="featurette-divider">
-
-                        <div class="row featurette">
-                        <div class="col-md-7 order-md-2">
-                            <h2 class="featurette-heading">Oh yeah, it’s that good. <span class="text-muted">See for yourself.</span></h2>
-                            <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
-                        </div>
-                        <div class="col-md-5 order-md-1">
-                            <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 500x500"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"/><text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text></svg>
-                        </div>
-                        </div>
-
-                        <hr class="featurette-divider">
-
-                        <div class="row featurette">
-                        <div class="col-md-7">
-                            <h2 class="featurette-heading">And lastly, this one. <span class="text-muted">Checkmate.</span></h2>
-                            <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
-                        </div>
-                        <div class="col-md-5">
-                            <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 500x500"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"/><text x="50%" y="50%" fill="#aaa" dy=".3em"></text></svg>
-                        </div>
-                        </div>
-                
-            </div>
-        </section> 
+  </section>
+    
 
         <!-- Gallery section-->
 
@@ -271,6 +307,7 @@ if(!mysqli_stmt_prepare($stmt, $sql)){
             </div>
 
         </section>
+
 <?php if($_SESSION['userStatus'] == 'admin') : ?>
 
         <section class="page-section bg-warning text-white">
@@ -281,6 +318,7 @@ if(!mysqli_stmt_prepare($stmt, $sql)){
            <script> alert("Tipo de Arquivo Errado") </script>
 
         <?php endif ?>
+        
                <h2 class="mb-4">Inserir Fotofrafias</h2>
                
                <form action="includes/gallery_upload.inc.php?insert=true" method="post" enctype="multipart/form-data">
