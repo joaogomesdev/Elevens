@@ -6,108 +6,129 @@
 
       require 'db.inc.php';
 
-      
-        
-       $userId = $_GET['id'];
-      $userName = $_POST['username'];
-      $userAge = $_POST['age'];
-      $userPhone = $_POST['phone'];
-      $userBornDate = $_POST['born_date'];
-      $confirmPassword = $_POST['passwordConfirm'];
-      $profileImg = $_POST['profile_image'];
-    
-    
-    
-        if( empty($confirmPassword)){
+           
+
             
-            header("Location: ../profile.php?error=emptyfieldsPass");
-            exit();
-        }
+        $userId = $_GET['id'];
+       $userName = $_POST['username'];
+       $userAge = $_POST['age'];
+       $userPhone = $_POST['phone'];
+       $userBornDate = $_POST['born_date'];
+       $confirmPassword = $_POST['passwordConfirm'];
+       $profileImg = $_POST['profile_image'];
+    
+    
+    
+         if( empty($confirmPassword)){
+            
+             header("Location: ../profile.php?error=emptyfieldsPass");
+             exit();
+         }
         
        
-        else {
+         else {
     
-            $sql = 'SELECT * from users where id=?';
-            $stmt = mysqli_stmt_init($conn);
+             $sql = 'SELECT * from users where id=?';
+             $stmt = mysqli_stmt_init($conn);
         
-            if(!mysqli_stmt_prepare($stmt , $sql)){
+             if(!mysqli_stmt_prepare($stmt , $sql)){
 
-                header("Location: ../profile.php?error=sqlierror"); 
-                exit();
-            }
+                 header("Location: ../profile.php?error=sqlierror"); 
+                 exit();
+             }
 
            
 
-            else {
+             else {
     
-                mysqli_stmt_bind_param($stmt, "s" , $userId );
-                mysqli_stmt_execute($stmt);
-                $result =  mysqli_stmt_get_result($stmt);
+                 mysqli_stmt_bind_param($stmt, "s" , $userId );
+                 mysqli_stmt_execute($stmt);
+                 $result =  mysqli_stmt_get_result($stmt);
 
-        if($row = mysqli_fetch_assoc($result)){///ver se coicidem 
+         if($row = mysqli_fetch_assoc($result)){//ver se coicidem 
 
-                $pass = md5($confirmPassword);
+                 $pass = md5($confirmPassword);
 
            
 
-                if($pass != $row['password']){
-                    header("Location: ../profile.php?passErrada");
-                    exit();
-                }
+                 if($pass != $row['password']){
+                     header("Location: ../profile.php?passErrada");
+                     exit();
+                 }
 
-                if($result == 0){
-                    header("Location: ../profile.php?passErrada");
-                    exit();
+                 if($result == 0){
+                     header("Location: ../profile.php?passErrada");
+                     exit();
 
-                }
-                if($userBornDate > date("d/m/Y")) {
+                 }
+                 if($userBornDate > date("d/m/Y")) {
 
-                    header("Location: ../profile.php?DateMaiorNow");
-                    exit();
-                }
+                     header("Location: ../profile.php?DateMaiorNow");
+                     exit();
+                 }
                 
                 
         
                
-                if(!$confirmPassword){
-                    header("Location: ../profile.php?passErrada");
-                    exit();
-                }
+                 if(!$confirmPassword){
+                     header("Location: ../profile.php?passErrada");
+                     exit();
+                 }
 
             
                
                 
 
-                else {
+                 else {
 
                    
 
-                     $sql = "UPDATE users set username=?, age=?, phone=?, born_date=? where id=?";
-                     $stmt = mysqli_stmt_init($conn);
+                      $sql = "UPDATE users set username=?, age=?, phone=?, born_date=? where id=?";
+                      $stmt = mysqli_stmt_init($conn);
           
-                     if(!mysqli_stmt_prepare($stmt , $sql)){
-                         header("Location: ../profile.php?eraaaaaror=sqlierror");
-                         exit();
-                     }
-                     else{
+                      if(!mysqli_stmt_prepare($stmt , $sql)){
+                          header("Location: ../profile.php?eraaaaaror=sqlierror");
+                          exit();
+                      }
+                      else{
+                      
+
+                          mysqli_stmt_bind_param($stmt, 'sssss', $userName, $userAge, $userPhone,$userBornDate, $userId);
+                          mysqli_stmt_execute($stmt);
+
+                         
+                    
+		
+                         if($_FILES['foto']['error']==0){
+                                
+                                 $file_name=$_FILES['foto']['name'];
+                                 $file_type=$_FILES['foto']['type'];
+                                 $file_size=$_FILES['foto']['size'];
+                                 $file_tmp=$_FILES['foto']['tmp_name'];
+                                 $data=base64_encode(file_get_contents($file_tmp));
+                               
+                                     $query="UPDATE users set name_img='".$file_name."',type_img='".$file_type."',
+                                 size_img=$file_size,data_img='".$data."' where id  =".$userId."";
+                                
+                                 $result_up=mysqli_query($conn, $query);
+                                 
+                             }
+
                       
          
-                         mysqli_stmt_bind_param($stmt, 'sssss', $userName, $userAge, $userPhone,$userBornDate, $userId);
-                         mysqli_stmt_execute($stmt);
-         
-                         header("Location: ../profile.php?edit=success");
-                         exit();
-                     }
+                          header("Location: ../profile.php?edit=success");
+                          exit();
+                      }
 
-                }
-            }
+                 }
+             }
             
-            }
+             }
 
-        }
+         }
         
-        mysqli_stmt_close($stmt);
-        mysqli_close($conn);
+         mysqli_stmt_close($stmt);
+         mysqli_close($conn);
     }
     
     else{

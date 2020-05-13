@@ -1,31 +1,23 @@
-<?php require_once "validar_acesso.php" ;
-
-
-
-?>
 
 <html>
   <head>
     <meta charset="utf-8" />
-    <title>Apoio ao Cliente</title>
+    <title>App Help Desk</title>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
     <style>
-
       .card-home {
         padding: 30px 0 0 0;
         width: 100%;
         margin: 0 auto;
       }
-
     </style>
   </head>
 
   <body>
+    <?php require "navbar_index_reservas.php" ?>
 
-  <?php require_once "navbar.php" ?>
-   
 
     <div class="container">    
       <div class="row">
@@ -38,20 +30,26 @@
             <div class="card-body">
               <div class="row">
                 <div class="col-6 d-flex justify-content-center">
-                <a href="colocar_duvida.php">
-                  <img src="formulario_abrir_chamado.png" width="70" height="70">
-                  </a>
+                   <h3>Adicionar Evento</h3><br>
                 </div>
                 <div class="col-6 d-flex justify-content-center">
-                <a href="consultar_duvida.php">
-                  <img src="formulario_consultar_chamado.png" width="70" height="70">
-                  </a>
+                  <h3>Consultar Eventos</h3><br>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-6 d-flex justify-content-center">
+                  <div></div>
+                   
+                  <a href="add_evento.php" ><img src="encontro.png" width="70" height="70"></a>
+                </div>
+                <div class="col-6 d-flex justify-content-center">
+               
+                  <a href="consultar_eventos.php" ><img src="musica.png" width="70" height="70"></a>
                 </div>
               </div>
             </div>
           </div>
         </div>
     </div>
-    
   </body>
 </html>

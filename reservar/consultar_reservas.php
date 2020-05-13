@@ -88,33 +88,68 @@ if(!isset($_SESSION['userId'])){
             
             <div class="card-body">
                     <?php foreach($result as $row) : ?>
+
+                      <div class="card mb-3 bg-light" >
+
+                        <div class="card-body">
+                          <h5 class="card-title">Reserva de: <?php echo $row['client_name']?></h5>
+
+                          <h6 class="card-subtitle mb-2 text-muted"><?php echo $row['date']?> / <?php echo $row['time']?></h6>
+
+                          <p class="card-text">Numero de pessoas: <?php echo $row['number_pessoas']?></p>
+
+                          <p class="card-text">Contacto telefonico do cliente: <?php echo $row['client_phone']?></p>
+                          <p class="card-text">Email do cliente: <?php echo $row['client_email']?></p>
+                          <p class="card-text">Reserva feita em: <?php echo $row['created_at']?></p>
+
+                
+
+                          <?php if($row['id_client'] ==  $_SESSION['userId'] && $row['status'] == 'pendente'):?>
+
+                          <a type="button" id="editar" class="btn btn-warning text-white card-link" href="editar_reserva.php?id=<?php echo $row['id_reserva'] ?>"> Editar</a>
+                          <a type="button" id="delete-duvida-btn" name="delete-duvida-btn card-link" class="btn btn-danger text-white" href="../includes/delete_data_duvidas.php?delete=sim&id=<?php echo $row['id_reserva'] ?>">Cancelar</a>
+
+                          <?php endif ?>
+
+                          <?php if($_SESSION['userStatus'] ==  'admin' && $row['status'] == 'pendente'):?>
+                            <a type="button" id="delete-duvida-btn" name="delete-duvida-btn card-link" class="btn btn-primary text-white" href="../includes/aprovar_reserva.php?aprovar=sim&id=<?php echo $row['id_reserva'] ?>">Aprovar</a>
+
+                            <?php endif ?>
+
+
+                            <?php if($row['status'] == 'cancelada'):?>
+                            <div class="alert alert-danger" role="alert">
+                             Reserva Cancelada!
+                            </div>
+                            <?php endif ?>
+
+                            <?php if($row['status'] == 'aprovada'):?>
+                            <div class="alert alert-success" role="alert">
+                             Reserva Confirmada!
+                            </div>
+
+                            <?php endif ?>
+
+                          <?php if($_SESSION['userStatus'] ==  'admin' && $row['status'] == 'aprovada'):?>
+                            <a type="button" id="delete-duvida-btn" name="delete-duvida-btn card-link" class="btn btn-danger text-white" href="../includes/cancelar_reserva.php?cancelar=sim&id=<?php echo $row['id_reserva'] ?>">Cancelar</a>
+
+                            <?php endif ?>
+
+
+                       
+
+                            <?php if($_SESSION['userStatus'] ==  'admin' && $row['status'] == 'cancelada'):?>
+                            <a type="button" id="delete-duvida-btn" name="delete-duvida-btn card-link" class="btn btn-success text-white" href="../includes/aprovar_reserva.php?aprovar=sim&id=<?php echo $row['id_reserva'] ?>">Aprovar</a>
+
+                            <?php endif ?>
+
                         
-                  <div class="card mb-3 bg-light">
-                    <div class="card-header">
-                    <h5> <?php echo $row['client_name']?> <span class="badge badge-primary"><?php echo $row['id_client']?></span></h6>
 
-                    <?php if($row['id_client'] ==  $_SESSION['userId']) :?>
-        
-                    <a type="button" id="editar" class="btn btn-warning text-white" href="editar_duvida.php?id=<?php echo $row['id_reserva'] ?>"> Editar</a>
-                    <?php endif ?>
-                    <?php if($_SESSION['userStatus'] ==  'admin' || $row['id_client'] ==  $_SESSION['userId']) :?>
-        
-                      <a type="button" id="delete-duvida-btn" name="delete-duvida-btn" class="btn btn-danger text-white" href="../includes/delete_data_duvidas.php?delete=sim&id=<?php echo $row['id_client'] ?>"> Eliminar</a>
-                    <?php endif ?>
-                  </div>
-                    <div class="card-body">
 
-                      <h6 class="card-title">Categoria: <?php echo $row['categoria']?></h5>
-                      <h7 class="card-subtitle mb-2 text-muted">Numero de pessoas: <?php echo $row['number_pessoas']?></h7><br>
-                      <h7 class="card-subtitle mb-2 text-muted">Data da reserva: <?php echo $row['date_reserva']?></h7><br>
-                      <h7 class="card-subtitle mb-2 text-muted">Hora da reserva: <?php echo $row['time_reserva']?></h7><br>
-                      <h7 class="card-subtitle mb-2 text-muted">Email do cliente: <?php echo $row['client_email']?></h7><br>
-                      <h7 class="card-subtitle mb-2 text-muted">Contacto telefonico do cliente: <?php echo $row['client_phone']?></h7><br>
-                      <h7 class="card-subtitle mb-2 text-muted">Reserva feita em: <?php echo $row['created_at']?></h7><br>
-                      <p class="card-text"><?php echo $row['observacoes']?></p>
-                      
-                    </div>
-                  </div>
+                        </div>
+                      </div>
+                    
+               
 
                       <?php endforeach ?>
 
@@ -123,7 +158,7 @@ if(!isset($_SESSION['userId'])){
 
               <div class="row mt-5">
                 <div class="col-6">
-                <a class="btn btn-lg btn-success btn-block" href="menu_duvidas.php">Voltar</a>
+                <a class="btn btn-lg btn-success btn-block" href="menu_reservas.php">Voltar</a>
                 </div>
               </div>
             </div>

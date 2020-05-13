@@ -28,6 +28,6 @@
 
 
     session_destroy();
-    header('Location: autenticar.php');
+    header('Location: ../autenticar.php');
 
 ?>

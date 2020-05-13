@@ -13,7 +13,7 @@
         <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dados</a>
         <div class="dropdown-menu" aria-labelledby="dropdown04">
           <a class="dropdown-item" href="users.php">Utilizadores</a>
-          <a class="dropdown-item" href="#">Dúvidas</a>
+          <a class="dropdown-item" href="duvidas.php">Dúvidas</a>
           <a class="dropdown-item" href="#">Reservas</a>
         </div>
       </li>

@@ -1,14 +1,18 @@
 <?php 
+
 session_start();
 
-require 'includes/db.inc.php';
+    
+    require 'includes/db.inc.php';
 
-$id_user = $_SESSION['userId'];
+    $id_user = $_SESSION['userId'];
 
 
-$sql = "SELECT * FROM users WHERE  id = $id_user";
+    $sql = "SELECT * FROM users WHERE  id = $id_user";
     $result = mysqli_query( $conn, $sql);
     $resultCheck = mysqli_num_rows($result);
+
+   
 
 ?>
 
@@ -129,18 +133,22 @@ $sql = "SELECT * FROM users WHERE  id = $id_user";
           </li>
       </ul>
     </nav> 
- 
-  <div class="container emp-profile">
-                <?php foreach($result as $row) : ?>
+    
+    
+    <div class="container emp-profile">
+        <?php foreach($result as $row) : ?>
             <form method="post">
                 <div class="row">
+               
                     <div class="col-md-4">
                         <div class="profile-img">
-                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS52y5aInsxSm31CvHOFHWujqUx_wWTS9iM6s7BAm21oEN_RiGoog" alt=""/>
-                            <div class="file btn btn-lg btn-primary">
-                                <?php echo $row['username']?>
-                                <input type="file" name="file"/>
-                            </div>
+                        <?php if(isset($_SESSION['userId'])) {?>
+					<a>
+					<img class="img-thumbnail" src="includes/showfile.php?user_id=<?php echo $_SESSION['userId'];?>" width="100">
+					</a>
+					<?php  } ?>
+                       
+                            
                         </div>
                     </div>
                     <div class="col-md-6">
@@ -221,6 +229,7 @@ $sql = "SELECT * FROM users WHERE  id = $id_user";
                         </div>
                     </div>
                 </div>
+              
             </form>           
             <?php endforeach ?> 
         </div>
