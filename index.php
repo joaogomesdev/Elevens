@@ -5,7 +5,7 @@ session_start();
 
 include_once "includes/db.inc.php";
 
-$sql = "SELECT * FROM galeria ORDER BY orderFoto DESC";
+/*$sql = "SELECT * FROM galeria ORDER BY orderFoto DESC";
 
 $stmt = mysqli_stmt_init($conn);
 if(!mysqli_stmt_prepare($stmt, $sql)){
@@ -16,7 +16,7 @@ if(!mysqli_stmt_prepare($stmt, $sql)){
     mysqli_stmt_execute($stmt);
     $result = mysqli_stmt_get_result($stmt);
 
-}
+} */
 ?>
 
 
@@ -87,7 +87,6 @@ if(!mysqli_stmt_prepare($stmt, $sql)){
 .mu-about-right p {
 	font-size: 15px;
 }
-
     </style>
     <!---- Icon admin Login -->
     <?php
@@ -96,21 +95,28 @@ if(!mysqli_stmt_prepare($stmt, $sql)){
 
    include "assets/content/icon_admin.php" ;
 
+
     }
 
         ?>
-
+   
 
     <?php include "assets/content/navbar.php" ?>
 
-        <!-- Masthead-->
-    
+  
          
-        
+
         <header class="masthead">
             <div class="container h-100">
                 <div class="row h-100 align-items-center justify-content-center text-center">
                     <div class="col-lg-10 align-self-end">
+                    
+					<?php if(isset($_SESSION['userId'])) {?>
+					<a>
+					<img class="img-thumbnail img-index" src="includes/showfile.php?user_id=<?php echo $_SESSION['userId'];?>" width="100">
+					</a>
+					<?php  } ?>
+					
                         <h1 class="text-uppercase text-white font-weight-bold">Bem-Vindo 
                             
                         
@@ -123,7 +129,6 @@ if(!mysqli_stmt_prepare($stmt, $sql)){
                                 if($_SESSION['userStatus'] == 'admin'){
 
                                     echo  $_SESSION['userStatus'];
-
                                 }else{
 
                                     echo  "<span>" . $_SESSION['userName'] . "</span>";
@@ -148,6 +153,8 @@ if(!mysqli_stmt_prepare($stmt, $sql)){
                 </div>
             </div>
         </header>
+
+      
                             
         <!-- About section-->
         <?php
@@ -186,6 +193,7 @@ if(!mysqli_stmt_prepare($stmt, $sql)){
                         }
 
 ?>
+ 
         	<section id="mu-about">
 			<div class="container">
 				<div class="row">
@@ -211,19 +219,21 @@ if(!mysqli_stmt_prepare($stmt, $sql)){
 								</div>
                             </div>
 							<!-- End Feature Content -->
-
+                            <?php    if(isset($_SESSION['userId'])) : ?>
                             <?php if($_SESSION['userStatus'] == 'admin') : ?>
             
                                
                                 <div class="container-fluid p-0">
                 <div class=" text-center ">
             
-                            <button class="btn btn-success btn-xl mt-4" name="submit-foto" href="" type="submit">Adicionar Evento</button>
+                            <a class="btn btn-success btn-xl mt-4" name="submit-foto" href="eventos/menu_eventos.php" type="submit">Adicionar Evento<a>
                 </div>
                             </div>
             
                           
                             <?php endif ?>
+                            <?php endif ?>
+
 						</div>
 					</div>
                 </div>
@@ -280,14 +290,14 @@ if(!mysqli_stmt_prepare($stmt, $sql)){
   </section>
     
 
-        <!-- Gallery section-->
+        <!-- Gallery section
 
         <section id="portfolio">
             <div class="container-fluid p-0">
             <div class=" text-center ">
                 <div class="row no-gutters">
 
-                <?php while($row = mysqli_fetch_assoc($result)){ 
+                <?php  while($row = mysqli_fetch_assoc($result)){ 
 
                     echo '<div class="col-lg-4 col-sm-6">
                             
@@ -301,13 +311,13 @@ if(!mysqli_stmt_prepare($stmt, $sql)){
                             </div></a>
                     </div>';
 
-                 } ?>
+                 }  ?>
                  </div>
                 </div>
             </div>
 
         </section>
-
+<?php    if(isset($_SESSION['userId'])) : ?>
 <?php if($_SESSION['userStatus'] == 'admin') : ?>
 
         <section class="page-section bg-warning text-white">
@@ -360,6 +370,7 @@ if(!mysqli_stmt_prepare($stmt, $sql)){
        </section> 
 
 <?php endif ?>
+<?php endif ?> -->
 
         <!-- Call to action section-->
          <section class="page-section bg-dark text-white">
@@ -369,7 +380,7 @@ if(!mysqli_stmt_prepare($stmt, $sql)){
             </div>
         </section> 
         
-       
+        
 
         <!-- Contact section-->
         <section class="page-section" id="contact">

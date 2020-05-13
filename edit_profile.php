@@ -130,15 +130,21 @@ $sql = "SELECT * FROM users WHERE  id = $id_user";
 
   
   <?php foreach($result as $row) : ?>
+    <form action="includes/editar_perfil.inc.php?id=<?php echo $row['id']?>" method="POST" enctype="multipart/form-data"> 
   <div class="container emp-profile">
           
+
                 <div class="row justify-content-center">
                     <div class="col-md-4 align-self-center ">
                         <div class="profile-img">
-                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS52y5aInsxSm31CvHOFHWujqUx_wWTS9iM6s7BAm21oEN_RiGoog" alt=""/>
+                        <?php if(isset($_SESSION['userId'])) {?>
+					<a>
+					<img src="includes/showfile.php?user_id=<?php echo $_SESSION['userId'];?>" width="100">
+					</a>
+					<?php  } ?>
                             <div class="file btn btn-lg btn-primary">
-                                <?php echo $row['username']?>
-                                <input type="file" name="file"/>
+                                Editar Foto
+                                <input type="file" name="foto" id="foto"/>
                             </div>
                         </div>
                     </div>
@@ -161,7 +167,6 @@ $sql = "SELECT * FROM users WHERE  id = $id_user";
                         <span><h3>Dados Pessoais</h3></span>
                     <div>
                     </div>
-                    <form action="includes/editar_perfil.inc.php?id=<?php echo $row['id']?>" method="POST">
              <div class="row">
                     <div class="col-md-8">
                     <div class="form-group">
