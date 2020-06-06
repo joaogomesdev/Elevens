@@ -4,6 +4,10 @@
 
 > This Project and a website for a local cafe in my city, the project will be presented at my PAP, which is my final proof of a professional course I attend at my school The entire project was carried out by entirely me
 
+# Layout Demonstration - Web
+
+![Recordit GIF](https://recordit.co/4p37COVX3I.gif)
+
 # Objective
 
 >The purpose of the website is to bring greater visibility to the cafe as well as deliver the best service among them reservations. 
