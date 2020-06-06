@@ -137,23 +137,22 @@ $sql = "SELECT * FROM users WHERE  id = $id_user";
                 <div class="row justify-content-center">
                     <div class="col-md-4 align-self-center ">
                         <div class="profile-img">
-<<<<<<< HEAD
+
                         <?php if(($_SESSION['foto_status'] == 'com')) {?>
-=======
-                        <?php if(isset($_SESSION['userId'])) {?>
->>>>>>> 810a2f6492e6956709cb0754306c54b7b3306e0e
+
+
 					<a>
 					<img src="includes/showfile.php?user_id=<?php echo $_SESSION['userId'];?>" width="100">
 					</a>
 					<?php  } ?>
-<<<<<<< HEAD
+
                         <?php if(($_SESSION['foto_status'] == 'sem')) {?>
 					<a>
 					<img src="assets/img/user.png" alt="" width="100">
 					</a>
 					<?php  } ?>
-=======
->>>>>>> 810a2f6492e6956709cb0754306c54b7b3306e0e
+
+
                             <div class="file btn btn-lg btn-primary">
                                 Editar Foto
                                 <input type="file" name="foto" id="foto"/>
@@ -249,7 +248,6 @@ $sql = "SELECT * FROM users WHERE  id = $id_user";
         </div>
 
         <?php endforeach ?>
-
 
 
   <?php foreach($result as $row) : ?>

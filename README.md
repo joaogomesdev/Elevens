@@ -1,4 +1,4 @@
-<img src="assets\img\elevens logo ouro.jpg" title="Image" alt="ProjectImage" width="400" height="400">
+<img src="assets\img\elevens logo ouro.jpg" title="Image" alt="ProjectImage">
 
 # Ellevens Caffe WebSite
 
