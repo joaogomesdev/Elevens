@@ -13,7 +13,7 @@
 >The purpose of the website is to bring greater visibility to the cafe as well as deliver the best service among them reservations. 
 
 # Future Updates 
->Migrate the websiteto React and do a React-Native App to the clients
+>Migrate the website to React and do a React-Native App to the clients
 
 
 ## Technologies
