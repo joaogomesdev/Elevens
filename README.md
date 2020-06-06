@@ -2,7 +2,7 @@
 
 # Ellevens Caffe WebSite
 
-> This Project and a website for a local cafe in my city, the project will be presented at my PAP, which is my final proof of a professional course I attend at my school The entire project was carried out by entirely me
+> This Project and a website for a local cafe in my city, the project will be presented at my PAP, which is my final proof of a professional course I attend at my school The entire project was carried out entirely by me
 
 # Layout Demonstration - Web
 
