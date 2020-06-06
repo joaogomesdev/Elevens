@@ -11,7 +11,7 @@
       
         
       $userid = $_SESSION['userId'];
-      $username = $_SESSION['userName'];
+      $username = $_SESSION['fname'] . " " .$_SESSION['lname'];
       $titulo = $_POST['titulo'];
       $categoria =  $_POST['categoria'];
       $descricao =  $_POST['descricao'];
@@ -36,7 +36,7 @@
             }
             else {
     
-                mysqli_stmt_bind_param($stmt, "sss" , $userid, $_SESSION['userName'], $titulo);
+                mysqli_stmt_bind_param($stmt, "sss" , $userid, $username, $titulo);
                 mysqli_stmt_execute($stmt);
                 mysqli_stmt_store_result($stmt);
                 $result = mysqli_stmt_num_rows($stmt);

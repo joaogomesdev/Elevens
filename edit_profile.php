@@ -137,9 +137,14 @@ $sql = "SELECT * FROM users WHERE  id = $id_user";
                 <div class="row justify-content-center">
                     <div class="col-md-4 align-self-center ">
                         <div class="profile-img">
-                        <?php if(isset($_SESSION['userId'])) {?>
+                        <?php if(($_SESSION['foto_status'] == 'com')) {?>
 					<a>
 					<img src="includes/showfile.php?user_id=<?php echo $_SESSION['userId'];?>" width="100">
+					</a>
+					<?php  } ?>
+                        <?php if(($_SESSION['foto_status'] == 'sem')) {?>
+					<a>
+					<img src="assets/img/user.png" alt="" width="100">
 					</a>
 					<?php  } ?>
                             <div class="file btn btn-lg btn-primary">
@@ -151,7 +156,7 @@ $sql = "SELECT * FROM users WHERE  id = $id_user";
                     <div class="col-md align-self-center">
                         <div class="profile-head">
                                 <h2>
-                                <?php echo $row['username']?>
+                                <?php echo $row['fname'] . " " .  $row['lname']?>
                                 </h2>
                                 <h6>
                                 <?php echo $row['user_status']?>
@@ -168,10 +173,16 @@ $sql = "SELECT * FROM users WHERE  id = $id_user";
                     <div>
                     </div>
              <div class="row">
-                    <div class="col-md-8">
+                    <div class="col-md-4">
                     <div class="form-group">
-                      <label>Nome</label>
-                      <input name="username" id="username" type="text" class="form-control" value=" <?php echo $row['username']?>">
+                      <label>Primeiro Nome</label>
+                      <input name="fname" id="fname" type="text" class="form-control" value=" <?php echo $row['fname']?>">
+                    </div>
+                    </div>
+                    <div class="col-md-4">
+                    <div class="form-group">
+                      <label>Ultimo Nomne</label>
+                      <input name="lname" id="lname" type="text" class="form-control" value=" <?php echo $row['lname']?>">
                     </div>
                     </div>
                     <div class="col-md-4">

@@ -69,7 +69,7 @@ if(!isset($_SESSION['userId'])){
             <div class="card-header">
               
               <?php 
-              if(isset($_SESSION['userName'])){
+              if(isset($_SESSION['fname'])){
 
             if($_SESSION['userStatus'] == 'admin'){
 

@@ -2,6 +2,7 @@
 
 session_start();
 
+print_r($_SESSION);
 
 include_once "includes/db.inc.php";
 
@@ -90,7 +91,7 @@ if(!mysqli_stmt_prepare($stmt, $sql)){
     </style>
     <!---- Icon admin Login -->
     <?php
-    if(isset($_SESSION['userName'])){
+    if(isset($_SESSION['fname'])){
 
 
    include "assets/content/icon_admin.php" ;
@@ -111,11 +112,15 @@ if(!mysqli_stmt_prepare($stmt, $sql)){
                 <div class="row h-100 align-items-center justify-content-center text-center">
                     <div class="col-lg-10 align-self-end">
                     
-					<?php if(isset($_SESSION['userId'])) {?>
+					
+					<?php if(isset($_SESSION['userId']))   {?>
+					 <?php if(isset($_SESSION['foto_status']))  {?> 
 					<a>
 					<img class="img-thumbnail img-index" src="includes/showfile.php?user_id=<?php echo $_SESSION['userId'];?>" width="100">
 					</a>
-					<?php  } ?>
+                     <?php  } ?> 
+                    <?php  } ?>
+                   
 					
                         <h1 class="text-uppercase text-white font-weight-bold">Bem-Vindo 
                             
@@ -124,14 +129,14 @@ if(!mysqli_stmt_prepare($stmt, $sql)){
                         
                         <?php
                         
-                        if(isset($_SESSION['userName'])){
+                        if(isset($_SESSION['fname'])){
 
                                 if($_SESSION['userStatus'] == 'admin'){
 
                                     echo  $_SESSION['userStatus'];
                                 }else{
 
-                                    echo  "<span>" . $_SESSION['userName'] . "</span>";
+                                    echo  "<span>" . $_SESSION['fname'] . "</span>";
                                 }
                                 
                         }
@@ -290,87 +295,7 @@ if(!mysqli_stmt_prepare($stmt, $sql)){
   </section>
     
 
-        <!-- Gallery section
-
-        <section id="portfolio">
-            <div class="container-fluid p-0">
-            <div class=" text-center ">
-                <div class="row no-gutters">
-
-                <?php  while($row = mysqli_fetch_assoc($result)){ 
-
-                    echo '<div class="col-lg-4 col-sm-6">
-                            
-
-                        <a class="portfolio-box" href="assets/img/gallery/'. $row["imgFullNameFoto"] . '">
-                        <img width=”100px" height=”100px” class="img-fluid align-self-center" src="assets/img/gallery/'. $row["imgFullNameFoto"] . '" alt="" />
-                            <div class="portfolio-box-caption">
-                                <div class="project-category text-white-50">'. $row["categoriaFoto"] . '</div>
-                                <div class="project-name">'. $row["tituloFoto"] . '</div>
-                                <div class="project-category text-white-50 mt-2">'. $row["descFoto"] . '</div>
-                            </div></a>
-                    </div>';
-
-                 }  ?>
-                 </div>
-                </div>
-            </div>
-
-        </section>
-<?php    if(isset($_SESSION['userId'])) : ?>
-<?php if($_SESSION['userStatus'] == 'admin') : ?>
-
-        <section class="page-section bg-warning text-white">
-           <div class="container text-center">
-           <?php if(  isset($_GET['typeFile'])  ) : ?>
-
-
-           <script> alert("Tipo de Arquivo Errado") </script>
-
-        <?php endif ?>
-        
-               <h2 class="mb-4">Inserir Fotofrafias</h2>
-               
-               <form action="includes/gallery_upload.inc.php?insert=true" method="post" enctype="multipart/form-data">
-
-               <div class="form-row">
-                     <div class="form-group col-md-3">
-
-                            <label for="categoria"><span>Categoria</span></label>
-                            <input type="text" class="form-control" id="categoria" name="filecategoria" placeholder="Categoria"  >
-                                
-                    </div>
-
-                    <div class="form-group col-md-3">
-                             <label for="titulo"><span>Nome da Imagem</span></label>
-                             <input type="text" class="form-control" id="filename" name="filename" placeholder="Nome do Ficheiro"  >
-                                
-                     </div>
-
-                    <div class="form-group col-md-3">
-                             <label for="titulo"><span>Titulo</span></label>
-                             <input type="text" class="form-control" id="titulo" name="filetitulo" placeholder="Titulo da imagem"  >
-                                
-                     </div>
-                    <div class="form-group col-md-3">
-                             <label for="titulo"><span>Descrição</span></label>
-                             <input type="text" class="form-control" id="descricao" name="filedescricao" placeholder="Descrição da Imagem"  >
-                                
-                     </div>
-                    <div class="form-group col-md-3">
-                             <label for="image"><span>Image</span></label>
-                             <input type="file" class="form-control" id="file" name="file">
-                                
-                     </div>
-             </div>
-
-               <button class="btn btn-success btn-xl mt-4" name="submit-foto" href="" type="submit">Inserir Fotofrafia</button>
-               </form>
-           </div>
-       </section> 
-
-<?php endif ?>
-<?php endif ?> -->
+       
 
         <!-- Call to action section-->
          <section class="page-section bg-dark text-white">

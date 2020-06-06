@@ -86,7 +86,7 @@ $sql = "SELECT * FROM users ";
                 <tr>
                     <th> <a type="button" id="view-user-btn" name="view-user-btn" class="btn btn-info text-white" href="view_profile.php?&id=<?php echo $row['id'] ?>">Ver Perfil</a></th>
                     <th scope="row"><?= $row['id']?></th>
-                    <td><?= $row['username']?></td>   
+                    <td><?= $row['fname'] . $row['lname']?></td>   
                     <td><?= $row['age']?></td>
                     <td><?= $row['email']?></td>
                     <td><?= $row['born_date']?></td>

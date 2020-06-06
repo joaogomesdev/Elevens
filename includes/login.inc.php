@@ -4,7 +4,7 @@ if(isset($_POST['login-submit'])){
 
     require 'db.inc.php';
 
-    $username = $_POST['username'];
+   
     $email = $_POST['email'];
     $password = $_POST['password'];
 
@@ -16,7 +16,7 @@ if(isset($_POST['login-submit'])){
         exit();
     }
     else{
-        $sql = "SELECT * FROM users WHERE username=? OR email=?";
+        $sql = "SELECT * FROM users WHERE email=?";
         $stmt = mysqli_stmt_init($conn);
 
         if(!mysqli_stmt_prepare($stmt , $sql)){
@@ -27,7 +27,7 @@ if(isset($_POST['login-submit'])){
         }
         else{
 
-            mysqli_stmt_bind_param($stmt, "ss" , $email, $email);
+            mysqli_stmt_bind_param($stmt, "s" , $email);
             mysqli_stmt_execute($stmt);
             $result =  mysqli_stmt_get_result($stmt);
            
@@ -50,10 +50,13 @@ if(isset($_POST['login-submit'])){
 
                         session_start();
                         $_SESSION['userId'] = $row['id'];
-                        $_SESSION['userName'] = $row['username'];
+                        $_SESSION['fname'] = $row['fname'];
+                        $_SESSION['lname'] = $row['lname'];
                         $_SESSION['userEmail'] = $row['email'];
+                        $_SESSION['foto_status'] = $row['foto_status'];
                         $_SESSION['userStatus'] = $row['user_status'];
                         $_SESSION['acountStatus'] = $row['acount_status'];
+                        
 
                         header('Location:  ../index.php?login=sucess');
                         exit();

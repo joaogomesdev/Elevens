@@ -4,39 +4,41 @@ if(isset($_POST['register-submit'])){
 
   require 'db.inc.php';
 
-  $username = $_POST['username'];
+  $fname = $_POST['fname'];
+  $lname = $_POST['lname'];
   $email = $_POST['email'];
   $password = $_POST['password'];
   $rePassword = $_POST['rePassword'];
+  $foto_status = 'sem';
 
 
 
-    if( empty($username) || empty($email)  || empty($password)  || empty($rePassword)  ){
+    if( empty($fname) || empty($lname) || empty($email)  || empty($password)  || empty($rePassword)  ){
         
-        header("Location: ../autenticar.php?emptyfields&username=".$username."&email=".$email."");
+        header("Location: ../autenticar.php?emptyfields&username=".$fname.$lname."&email=".$email."");
         exit();
     }
     else if(!filter_var($email, FILTER_VALIDATE_EMAIL )){
-        header("Location: ../autenticar.php?invalidemail&username=".$username."");
+        header("Location: ../autenticar.php?invalidemail&username=".$fname.$lname."");
         exit();
     }
     else if($password !== $rePassword){
-        header("Location: ../autenticar.php?passRepass&username=".$username."&email=".$email."");
+        header("Location: ../autenticar.php?passRepass&username=".$fname.$lname."&email=".$email."");
         exit();
     }
 
     else {
 
-        $sql = "SELECT username FROM users WHERE username=? ";
+        $sql = "SELECT email FROM users WHERE email=?";
         $stmt = mysqli_stmt_init($conn);
     
         if(!mysqli_stmt_prepare($stmt , $sql)){
-            header("Location: ../autenticar.php?error=sqlierror"); 
+            header("Location: ../autenticar.php?error=sqlierroraaaa"); 
             exit();
         }
         else {
 
-            mysqli_stmt_bind_param($stmt, "s" , $username);
+            mysqli_stmt_bind_param($stmt, "s" , $email);
             mysqli_stmt_execute($stmt);
             mysqli_stmt_store_result($stmt);
             $result = mysqli_stmt_num_rows($stmt);
@@ -45,7 +47,7 @@ if(isset($_POST['register-submit'])){
                 exit();
              }
             else{
-                $sql = "INSERT INTO users (username, email ,password) VALUES ( ? , ? , ? )";
+                $sql = "INSERT INTO users (fname,lname , email ,password, foto_status) VALUES ( ? , ? , ? , ? , ?)";
                 $stmt = mysqli_stmt_init($conn);
     
                 if(!mysqli_stmt_prepare($stmt , $sql)){
@@ -55,7 +57,7 @@ if(isset($_POST['register-submit'])){
                 else{
                     $incriptedPwd = md5($password);
     
-                    mysqli_stmt_bind_param($stmt, 'sss', $username, $email, $incriptedPwd);
+                    mysqli_stmt_bind_param($stmt, 'sssss', $fname, $lname , $email, $incriptedPwd, $foto_status);
                     mysqli_stmt_execute($stmt);
     
                     header("Location: ../autenticar.php?RegisterSuccess");

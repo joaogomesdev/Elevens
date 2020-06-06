@@ -1,9 +1,14 @@
 <?php
 session_start();
+
+include '../includes/db.inc.php';
+
 if(isset($_POST['submit'])){
+    
     $fname = $_POST['fname'];
     $lname = $_POST['lname'];
     $email = $_POST['email'];
+
     if(!empty($email) && !filter_var($email, FILTER_VALIDATE_EMAIL) === false){
         // MailChimp API credentials
         $apiKey = 'ed1824ff58850ee79892bd12478218e8-us18';
@@ -39,12 +44,49 @@ if(isset($_POST['submit'])){
         
         // store the status message based on response code
         if ($httpCode == 200) {
+           
+        $sql = "SELECT email FROM mailchimp WHERE email=?";
+        $stmt = mysqli_stmt_init($conn);
+    
+        if(!mysqli_stmt_prepare($stmt , $sql)){
+            header("Location: /index.php?error=sqlerrorMailchimp"); 
+            exit();
+        }
+        else {
+
+            mysqli_stmt_bind_param($stmt, "s" , $email);
+            mysqli_stmt_execute($stmt);
+            mysqli_stmt_store_result($stmt);
+            $result = mysqli_stmt_num_rows($stmt);
+            if($result > 0){
+                header("Location: email_taken.html");
+                exit();
+             }
+            else{
+                $sql = "INSERT INTO mailchimp (fname , lname , email ) VALUES ( ? , ? , ?)";
+                $stmt = mysqli_stmt_init($conn);
+    
+                if(!mysqli_stmt_prepare($stmt , $sql)){
+                    header("Location: ../autenticar.php?sqlierror");
+                    exit();
+                }
+                else{
+                    mysqli_stmt_bind_param($stmt, 'sss', $fname, $lname , $email);
+                    mysqli_stmt_execute($stmt);
+                }
+            }
+        }
             header('location:success.html');
             exit();
+
         } else {
             switch ($httpCode) {
                 case 214:
                     header('location:index.php?taken');
+                    exit();
+                    break;
+                case 401:
+                    header('location:error.html');
                     exit();
                     break;
                 default:
@@ -56,7 +98,7 @@ if(isset($_POST['submit'])){
         }
     }else{
         header('location:index.php?mail');
-            exit();
+        exit();
     }
 }
 // redirect to homepage

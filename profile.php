@@ -141,20 +141,27 @@ session_start();
                 <div class="row">
                
                     <div class="col-md-4">
-                        <div class="profile-img">
-                        <?php if(isset($_SESSION['userId'])) {?>
+                    <div class="profile-img">
+                        <?php if(($_SESSION['foto_status'] == 'com')) {?>
 					<a>
-					<img class="img-thumbnail" src="includes/showfile.php?user_id=<?php echo $_SESSION['userId'];?>" width="100">
+					<img src="includes/showfile.php?user_id=<?php echo $_SESSION['userId'];?>" width="100">
 					</a>
 					<?php  } ?>
-                       
-                            
+                        <?php if(($_SESSION['foto_status'] == 'sem')) {?>
+					<a>
+					<img src="assets/img/user.png" alt="" width="100">
+					</a>
+					<?php  } ?>
+                            <div class="file btn btn-lg btn-primary">
+                                Editar Foto
+                                <input type="file" name="foto" id="foto"/>
+                            </div>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="profile-head">
                                     <h5>
-                                    <?php echo $row['username']?>
+                                    <?php echo $row['fname'] . " " .$row['lname']?>
                                     </h5>
                                     <h6>
                                     <?php echo $row['user_status']?>
@@ -189,7 +196,7 @@ session_start();
                                                 <label>Name</label>
                                             </div>
                                             <div class="col-md-6">
-                                            <p><?php echo $row['username']?></p>
+                                            <p><?php echo $row['fname'] . " " . $row['lname']?></p>
                                             </div>
                                         </div>
                                         <div class="row">

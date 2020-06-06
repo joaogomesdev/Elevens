@@ -192,7 +192,16 @@ session_start();
                           
                 <form action="includes/singup.inc.php" method="POST">
                   <div class="form-group">
-                    <input name="username" id="username" type="text" class="form-control"  placeholder="Nome">
+                    <div class="row">
+                      <div class="col-6">
+                        <input name="fname" id="fname" type="text" class="form-control"  placeholder="Primeiro Nome">
+
+                      </div>
+                        <div class="col-6">
+
+                        <input name="lname" id="lname" type="text" class="form-control"  placeholder="Ultimo Nome">
+                      </div>
+                    </div>
                   </div>
                   <div class="form-group">
                     <input name="email" id="email" type="email" class="form-control"  placeholder="E-Mail">

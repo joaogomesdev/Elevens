@@ -94,11 +94,24 @@ body {
                     <form method="POST" action="action.php"  class="form-signin">
     
                 <img class="mb-4" src="../assets\img\o-negocio.png" alt="" width="72" height="72">
-                <h1 class="h3 mb-3 font-weight-normal">Subscrever a Newsletter</h1>
-                <input type="text"  name="fname"class="form-control top" placeholder="Primeiro Nome" required autofocus>
-                <input type="text"  name="lname" class="form-control middle" placeholder="Ultimo Nome" required >
-                <input type="email" name="email" class="form-control bottom" placeholder="E-Mail" required>
-                <input class="btn btn-lg btn-warning text-white btn-block" type="submit" name="submit" value="Subscrever">
+                <h1 class=" d-block mx-auto mb-2display-4 text-success">Newsletter!</h1>
+                <div class="row">
+                  <div class="col">
+                    
+                    <h4 class=" d-block mx-auto mb-2display-4 text-info mb-2">Deseja subscrever a newsletter e receber todas as noticias e novidades em primeira mão?</h4>
+                  </div>
+                </div>
+                <div class="row mt-5">
+                  <div class="col-6">
+                    <a class="btn btn-lg btn-danger text-white btn-block"  value="Não" href="../index.php">Não</a>
+
+                  </div>
+                  <div class="col-6">
+                    <input  class="btn btn-lg btn-success text-white btn-block" type="submit" name="submit" value="SIm">
+
+                  </div>
+                  
+                </div>
 
                <?php if(isset($_GET['success'])){
                             
