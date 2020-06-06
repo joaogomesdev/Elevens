@@ -10,8 +10,12 @@
 
             
         $userId = $_GET['id'];
+<<<<<<< HEAD
        $fname = $_POST['fname'];
        $lname = $_POST['lname'];
+=======
+       $userName = $_POST['username'];
+>>>>>>> 810a2f6492e6956709cb0754306c54b7b3306e0e
        $userAge = $_POST['age'];
        $userPhone = $_POST['phone'];
        $userBornDate = $_POST['born_date'];
@@ -84,7 +88,11 @@
 
                    
 
+<<<<<<< HEAD
                       $sql = "UPDATE users set fname=?, lname=? , age=?, phone=?, born_date=? where id=?";
+=======
+                      $sql = "UPDATE users set username=?, age=?, phone=?, born_date=? where id=?";
+>>>>>>> 810a2f6492e6956709cb0754306c54b7b3306e0e
                       $stmt = mysqli_stmt_init($conn);
           
                       if(!mysqli_stmt_prepare($stmt , $sql)){
@@ -94,7 +102,11 @@
                       else{
                       
 
+<<<<<<< HEAD
                           mysqli_stmt_bind_param($stmt, 'ssssss', $fname, $lname, $userAge, $userPhone,$userBornDate, $userId);
+=======
+                          mysqli_stmt_bind_param($stmt, 'sssss', $userName, $userAge, $userPhone,$userBornDate, $userId);
+>>>>>>> 810a2f6492e6956709cb0754306c54b7b3306e0e
                           mysqli_stmt_execute($stmt);
 
                          
@@ -107,11 +119,17 @@
                                  $file_size=$_FILES['foto']['size'];
                                  $file_tmp=$_FILES['foto']['tmp_name'];
                                  $data=base64_encode(file_get_contents($file_tmp));
+<<<<<<< HEAD
                                  $foto_status = 'com';
                                  $_SESSION['foto_status'] = $foto_status;
                                
                                      $query="UPDATE users set name_img='".$file_name."',type_img='".$file_type."',
                                  size_img=$file_size,data_img='".$data."',  foto_status='".$foto_status."' where id  =".$userId."";
+=======
+                               
+                                     $query="UPDATE users set name_img='".$file_name."',type_img='".$file_type."',
+                                 size_img=$file_size,data_img='".$data."' where id  =".$userId."";
+>>>>>>> 810a2f6492e6956709cb0754306c54b7b3306e0e
                                 
                                  $result_up=mysqli_query($conn, $query);
                                  

@@ -141,6 +141,7 @@ session_start();
                 <div class="row">
                
                     <div class="col-md-4">
+<<<<<<< HEAD
                     <div class="profile-img">
                         <?php if(($_SESSION['foto_status'] == 'com')) {?>
 					<a>
@@ -156,6 +157,16 @@ session_start();
                                 Editar Foto
                                 <input type="file" name="foto" id="foto"/>
                             </div>
+=======
+                        <div class="profile-img">
+                        <?php if(isset($_SESSION['userId'])) {?>
+					<a>
+					<img class="img-thumbnail" src="includes/showfile.php?user_id=<?php echo $_SESSION['userId'];?>" width="100">
+					</a>
+					<?php  } ?>
+                       
+                            
+>>>>>>> 810a2f6492e6956709cb0754306c54b7b3306e0e
                         </div>
                     </div>
                     <div class="col-md-6">

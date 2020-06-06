@@ -84,7 +84,11 @@ $sql = "SELECT * FROM duvidas ";
                 <tr>
                     <th> <a type="button" id="view-user-btn" name="view-user-btn" class="btn btn-info text-white" href="view_profile.php?&id=<?php echo $row['id_user'] ?>">Ver Perfil</a></th>
                     <th scope="row"><?= $row['id_duvida']?></th>
+<<<<<<< HEAD
                     <td><?= $row['fname'] . $row['lname']?></td>   
+=======
+                    <td><?= $row['username']?></td>   
+>>>>>>> 810a2f6492e6956709cb0754306c54b7b3306e0e
                     <td><?= $row['titulo']?></td>
                     <td><?= $row['categoria']?></td>
                     <td><?= $row['descricao']?></td>
