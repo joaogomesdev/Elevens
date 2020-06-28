@@ -47,7 +47,7 @@ if(isset($_POST['register-submit'])){
                 exit();
              }
             else{
-                $sql = "INSERT INTO users (fname,lname , email ,password, foto_status) VALUES ( ? , ? , ? , ? , ?)";
+                $sql = "INSERT INTO users (fname, lname , email ,password, foto_status) VALUES ( ? , ? , ? , ? , ?)";
                 $stmt = mysqli_stmt_init($conn);
     
                 if(!mysqli_stmt_prepare($stmt , $sql)){

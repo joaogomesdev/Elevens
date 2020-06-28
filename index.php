@@ -3,8 +3,6 @@
 session_start();
 
 include_once "includes/db.inc.php";
-
-
 ?>
 
 
@@ -102,7 +100,7 @@ include_once "includes/db.inc.php";
 
 					
 					<?php if(isset($_SESSION['userId']))   {?>
-					 <?php if(isset($_SESSION['foto_status']))  {?> 
+					 <?php if(isset($_SESSION['foto_status']) == "com")  {?> 
 					<a>
 					<img class="img-thumbnail img-index" src="includes/showfile.php?user_id=<?php echo $_SESSION['userId'];?>" width="100">
 					</a>
@@ -112,7 +110,7 @@ include_once "includes/db.inc.php";
 					
 
 					
-                        <h1 class="text-uppercase text-white font-weight-bold">Bem-Vindo 
+                        <h1 class="text-uppercase text-white font-weight-bold">Bem-Vindo
                             
                         
                         
@@ -189,7 +187,7 @@ include_once "includes/db.inc.php";
 
 ?>
  
-        	<section id="mu-about">
+        	<section  id="events">
 			<div class="container">
 				<div class="row">
 					<div class="col-md-12">

@@ -56,6 +56,7 @@ if(isset($_POST['login-submit'])){
                         $_SESSION['foto_status'] = $row['foto_status'];
                         $_SESSION['userStatus'] = $row['user_status'];
                         $_SESSION['acountStatus'] = $row['acount_status'];
+                        $_SESSION['newsletter_status'] = $row['newsletter_status'];
                         
 
                         header('Location:  ../index.php?login=sucess');

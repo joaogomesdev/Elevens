@@ -2,6 +2,7 @@
 session_start();
 
 
+
 if(!isset($_SESSION['userId'])){
 
   header("Location: autenticar.php?acesso=negado");
@@ -127,6 +128,9 @@ $sql = "SELECT * FROM users WHERE  id = $id_user";
       </ul>
     </nav> 
 
+    
+
+   
 
   
   <?php foreach($result as $row) : ?>
@@ -137,7 +141,6 @@ $sql = "SELECT * FROM users WHERE  id = $id_user";
                 <div class="row justify-content-center">
                     <div class="col-md-4 align-self-center ">
                         <div class="profile-img">
-
                         <?php if(($_SESSION['foto_status'] == 'com')) {?>
 
 
@@ -182,19 +185,19 @@ $sql = "SELECT * FROM users WHERE  id = $id_user";
                     <div class="col-md-4">
                     <div class="form-group">
                       <label>Primeiro Nome</label>
-                      <input name="fname" id="fname" type="text" class="form-control" value=" <?php echo $row['fname']?>">
+                      <input name="fname" id="fname" type="text" class="form-control" value="<?php echo $row['fname']?>">
                     </div>
                     </div>
                     <div class="col-md-4">
                     <div class="form-group">
                       <label>Ultimo Nomne</label>
-                      <input name="lname" id="lname" type="text" class="form-control" value=" <?php echo $row['lname']?>">
+                      <input name="lname" id="lname" type="text" class="form-control" value="<?php echo $row['lname']?>">
                     </div>
                     </div>
                     <div class="col-md-4">
                     <div class="form-group">
                       <label>Idade</label>
-                      <input name="age" id="age" type="text" class="form-control" value=" <?php echo $row['age']?>">
+                      <input name="age" id="age" type="text" class="form-control" value="<?php echo $row['age']?>">
                     </div>
                     </div>
 
@@ -203,7 +206,7 @@ $sql = "SELECT * FROM users WHERE  id = $id_user";
                     <div class="col-md">
                     <div class="form-group">
                       <label>E-Mail</label>
-                      <input name="email" id="email" type="text" class="form-control" value=" <?php echo $row['email']?>">
+                      <input name="email" id="email" type="text" class="form-control" value="<?php echo $row['email']?>">
                     </div>
                     </div>
              </div>
@@ -211,13 +214,13 @@ $sql = "SELECT * FROM users WHERE  id = $id_user";
                     <div class="col-md-6">
                     <div class="form-group">
                       <label>Phone</label>
-                      <input name="phone" id="nome" type="text" class="form-control" value=" <?php echo $row['phone']?>">
+                      <input name="phone" id="nome" type="text" class="form-control" value="<?php echo $row['phone']?>">
                     </div>
                     </div>
                     <div class="col-md-6">
                     <div class="form-group">
                       <label>Data de Nascimento</label>
-                      <input name="born_date" id="born_date" type="date" class="form-control" value=" <?php echo $row['born_date']?>">
+                      <input name="born_date" id="born_date" type="date" class="form-control" value="<?php echo $row['born_date']?>">
                     </div>
                     </div>
 
@@ -234,7 +237,7 @@ $sql = "SELECT * FROM users WHERE  id = $id_user";
              <div class="col-md">
                     <div class="form-group">
                         
-                        <button class="btn btn-lg btn-success btn-block" name="edit-profile-submit" id="edit-profile-submit" type="submit">editar</button>
+                        <button class="btn btn-lg btn-success btn-block" name="edit-profile-submit" id="edit-profile-submit" type="submit">Editar</button>
                     </div>
                     </div>
              </div>

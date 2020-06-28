@@ -49,7 +49,7 @@ if(isset($_POST['submit'])){
         $stmt = mysqli_stmt_init($conn);
     
         if(!mysqli_stmt_prepare($stmt , $sql)){
-            header("Location: /index.php?error=sqlerrorMailchimp"); 
+            header("Location: index.php?error=sqlerrorMailchimp"); 
             exit();
         }
         else {
@@ -76,17 +76,17 @@ if(isset($_POST['submit'])){
                 }
             }
         }
-            header('location:success.html');
+            header('Location: success.html');
             exit();
 
         } else {
             switch ($httpCode) {
                 case 214:
-                    header('location:index.php?taken');
+                    header('Location: index.php?taken');
                     exit();
                     break;
                 case 401:
-                    header('location:error.html');
+                    header('Location: error.html');
                     exit();
                     break;
                 default:
@@ -97,7 +97,7 @@ if(isset($_POST['submit'])){
            
         }
     }else{
-        header('location:index.php?mail');
+        header('Location: index.php?mail');
         exit();
     }
 }

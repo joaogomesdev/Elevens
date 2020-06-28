@@ -133,7 +133,51 @@ session_start();
           </li>
       </ul>
     </nav> 
-    
+
+        <?php if(  isset($_GET['passErrada']) ) : ?>
+
+        <div class="container emp-profile">
+      
+            <div class="alert alert-danger d-flex justify-content-center"r role="alert">
+                
+            <h3>Palavra-passe errada <span class="badge badge-secondary bg-danger">:(</span></h3>
+                
+            </div>
+
+        </div>
+
+
+<?php endif ?>
+
+<?php if(  isset($_GET['DateMaiorNow']) ) : ?>
+
+<div class="container emp-profile">
+
+    <div class="alert alert-danger d-flex justify-content-center"r role="alert">
+        
+    <h3>Palavra-passe errada <span class="badge badge-secondary bg-danger">:(</span></h3>
+        
+    </div>
+
+</div>
+
+
+<?php endif ?>
+
+<?php if(  isset($_GET['success']) ) : ?>
+
+<div class="container emp-profile">
+
+    <div class="alert alert-success d-flex justify-content-center"r role="alert">
+        
+    <h3>Dados editados com sucesso <span class="badge badge-secondary bg-success">:)</span></h3>
+        
+    </div>
+
+</div>
+
+
+<?php endif ?>
     
     <div class="container emp-profile">
         <?php foreach($result as $row) : ?>
@@ -154,8 +198,7 @@ session_start();
 					</a>
 					<?php  } ?>
                             <div class="file btn btn-lg btn-primary">
-                                Editar Foto
-                                <input type="file" name="foto" id="foto"/>
+                            <?php echo $row['fname'] . " " .$row['lname']?>
                             </div>
 
                         </div>

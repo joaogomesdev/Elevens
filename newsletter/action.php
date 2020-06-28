@@ -1,13 +1,16 @@
 <?php
 session_start();
 
+include '../includes/db.inc.php';
+
 if(isset($_POST['submit'])){
     
-    $fname = $_SESSION['fname'];
-    $lname = $_SESSION['lname'];
-    $email = $_SESSION['userEmail'];
+   $fname =  $_SESSION['fname'];
+   $lname = $_SESSION['lname'];
+   $email = $_SESSION['userEmail'];
 
     if(!empty($email) && !filter_var($email, FILTER_VALIDATE_EMAIL) === false){
+        
         // MailChimp API credentials
         $apiKey = 'ed1824ff58850ee79892bd12478218e8-us18';
         $listID = 'f6294206ef';
@@ -25,7 +28,7 @@ if(isset($_POST['submit'])){
                 'FNAME'     => $fname,
                 'LNAME'     => $lname
             ]
-        ]); 
+        ]);
         
         // send a HTTP POST request with curl
         $ch = curl_init($url);
@@ -42,16 +45,62 @@ if(isset($_POST['submit'])){
         
         // store the status message based on response code
         if ($httpCode == 200) {
-            header('location:success.html');
+        $sub= "sub";
+        $sql = "SELECT email FROM mailchimp WHERE email=?";
+        $stmt = mysqli_stmt_init($conn);
+    
+        if(!mysqli_stmt_prepare($stmt , $sql)){
+            header("Location: index.php?error=sqlerrorMailchimp"); 
             exit();
+        }
+        else {
+
+            mysqli_stmt_bind_param($stmt, "s" , $email);
+            mysqli_stmt_execute($stmt);
+            mysqli_stmt_store_result($stmt);
+            $result = mysqli_stmt_num_rows($stmt);
+            if($result > 0){
+                header("Location: email_taken.html");
+                exit();
+             }
+            else{
+                $sql = "INSERT INTO mailchimp (fname , lname , email ) VALUES ( ? , ? , ?)";
+                $stmt = mysqli_stmt_init($conn);
+    
+                if(!mysqli_stmt_prepare($stmt , $sql)){
+                    header("Location: ../index.php?sqlierrorInsert");
+                    exit();
+                }
+                else{
+                    mysqli_stmt_bind_param($stmt, 'sss', $fname, $lname , $email);
+                    mysqli_stmt_execute($stmt);
+                }
+            }
+
+            $sql="UPDATE users set newsletter_status=? where id =".$_SESSION['userId']."";
+            $stmt = mysqli_stmt_init($conn);
+
+            if(!mysqli_stmt_prepare($stmt , $sql)){
+                header("Location: ../index.php?sqlierrorUpdate");
+                exit();
+            }
+            else{
+                mysqli_stmt_bind_param($stmt, 's', $sub);
+                mysqli_stmt_execute($stmt);
+            }
+
+        }
+            header('Location: success.html');
+            exit();
+
         } else {
             switch ($httpCode) {
                 case 214:
-                    header('location:index.php?taken');
+                    header('Location: index.php?taken');
                     exit();
                     break;
                 case 401:
-                    header('location:error.html');
+                    header('Location: error.html');
                     exit();
                     break;
                 default:
@@ -62,7 +111,7 @@ if(isset($_POST['submit'])){
            
         }
     }else{
-        header('location:index.php?mail');
+        header('Location: index.php?mail');
         exit();
     }
 }

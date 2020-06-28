@@ -34,9 +34,20 @@
                                     
                                     echo  '<li class="nav-item"><a class="btn btn-primary pt-2 pb-2 pr-3 text-white ml-2 mr-6 nav-link js-scroll-trigger" href="includes/logout.php">Sair</a></li>';
                                     
+                                    
+
+                                   if(isset($_SESSION['userId']) &&  $_SESSION['newsletter_status'] === 'sub'){
+
+                                    echo '<li class="nav-item"><a class=" pt-2 pb-2 nav-link js-scroll-trigger" href="newsletter/email_taken.html"><img src="assets\img\pequeno.png" ></a></li>';
+
+                                   }
+
+                                   if(isset($_SESSION['userId']) && $_SESSION['newsletter_status'] === 'semSub'){
+
                                     echo '<li class="nav-item"><a class=" pt-2 pb-2 nav-link js-scroll-trigger" href="newsletter/index_sub.php"><img src="assets\img\pequeno.png" ></a></li>';
 
-                              
+                                   }
+                                    
         
                                 }
                           

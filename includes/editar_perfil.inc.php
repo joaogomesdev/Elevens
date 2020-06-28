@@ -17,7 +17,6 @@
        $userPhone = $_POST['phone'];
        $userBornDate = $_POST['born_date'];
        $confirmPassword = $_POST['passwordConfirm'];
-       $profileImg = $_POST['profile_image'];
     
     
     
@@ -58,24 +57,14 @@
                      exit();
                  }
 
-                 if($result == 0){
-                     header("Location: ../profile.php?passErrada");
-                     exit();
-
-                 }
+               
                  if($userBornDate > date("d/m/Y")) {
 
                      header("Location: ../profile.php?DateMaiorNow");
                      exit();
                  }
                 
-                
-        
-               
-                 if(!$confirmPassword){
-                     header("Location: ../profile.php?passErrada");
-                     exit();
-                 }
+
 
             
                
@@ -86,8 +75,6 @@
                    
 
                       $sql = "UPDATE users set fname=?, lname=? , age=?, phone=?, born_date=? where id=?";
-
-                      $sql = "UPDATE users set username=?, age=?, phone=?, born_date=? where id=?";
 
                       $stmt = mysqli_stmt_init($conn);
           
@@ -101,14 +88,14 @@
 
                           mysqli_stmt_bind_param($stmt, 'ssssss', $fname, $lname, $userAge, $userPhone,$userBornDate, $userId);
 
-                          mysqli_stmt_bind_param($stmt, 'sssss', $userName, $userAge, $userPhone,$userBornDate, $userId);
+
 
                           mysqli_stmt_execute($stmt);
 
                          
                     
 		
-                         if($_FILES['foto']['error']==0){
+                         if($_FILES['foto']['error']===0){
                                 
                                  $file_name=$_FILES['foto']['name'];
                                  $file_type=$_FILES['foto']['type'];
@@ -120,7 +107,7 @@
                                  $_SESSION['foto_status'] = $foto_status;
                                
                                      $query="UPDATE users set name_img='".$file_name."',type_img='".$file_type."',
-                                 size_img=$file_size,data_img='".$data."',  foto_status='".$foto_status."' where id  =".$userId."";
+                                 size_img=$file_size,data_img='".$data."',  foto_status='".$foto_status."' where id =".$userId."";
 
                                 
                                  $result_up=mysqli_query($conn, $query);
@@ -129,8 +116,8 @@
 
                       
          
-                          header("Location: ../profile.php?edit=success");
-                          exit();
+                             header("Location: ../profile.php?success");
+                             exit();
                       }
 
                  }

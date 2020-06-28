@@ -17,7 +17,7 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
 <link href="css/styles.css" rel="stylesheet">
-    <title>Document</title>
+    <title>Newsletter</title>
 
     <style>
         html,
@@ -107,7 +107,7 @@ body {
 
                   </div>
                   <div class="col-6">
-                    <input  class="btn btn-lg btn-success text-white btn-block" type="submit" name="submit" value="SIm">
+                    <input  class="btn btn-lg btn-success text-white btn-block" type="submit" name="submit" value="Sim">
 
                   </div>
                   
