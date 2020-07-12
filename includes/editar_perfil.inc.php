@@ -14,6 +14,7 @@
       $lname = $_POST['lname'];
 
        $userAge = $_POST['age'];
+       $email =  $_POST['email'];
        $userPhone = $_POST['phone'];
        $userBornDate = $_POST['born_date'];
        $confirmPassword = $_POST['passwordConfirm'];
@@ -22,7 +23,7 @@
     
          if( empty($confirmPassword)){
             
-             header("Location: ../profile.php?error=emptyfieldsPass");
+             header("Location: ../profile.php?emptyfieldsPass");
              exit();
          }
         
@@ -74,7 +75,7 @@
 
                    
 
-                      $sql = "UPDATE users set fname=?, lname=? , age=?, phone=?, born_date=? where id=?";
+                      $sql = "UPDATE users set fname=?, lname=? , age=?, email=? , phone=? where id=?";
 
                       $stmt = mysqli_stmt_init($conn);
           
@@ -86,7 +87,7 @@
                       
 
 
-                          mysqli_stmt_bind_param($stmt, 'ssssss', $fname, $lname, $userAge, $userPhone,$userBornDate, $userId);
+                          mysqli_stmt_bind_param($stmt, 'sssssss', $fname, $lname, $userAge,$email, $userPhone, $userId);
 
 
 
@@ -95,7 +96,7 @@
                          
                     
 		
-                         if($_FILES['foto']['error']===0){
+                         if($_FILES['foto']['error']==0){
                                 
                                  $file_name=$_FILES['foto']['name'];
                                  $file_type=$_FILES['foto']['type'];
@@ -108,7 +109,7 @@
                                
                                      $query="UPDATE users set name_img='".$file_name."',type_img='".$file_type."',
                                  size_img=$file_size,data_img='".$data."',  foto_status='".$foto_status."' where id =".$userId."";
-
+                                    $_SESSION['foto_status'] = "com";
                                 
                                  $result_up=mysqli_query($conn, $query);
                                  

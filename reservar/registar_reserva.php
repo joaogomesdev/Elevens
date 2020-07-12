@@ -21,9 +21,9 @@
     
     
     
-        if( empty($clientName) || empty($date) || empty($time) || empty($categoria) || empty($clientEmail) || empty($clientPhone) || empty($observacoes) ){
+        if( empty($clientName) || empty($date) || empty($time) || empty($categoria) || empty($clientEmail) || empty($clientPhone) ){
             
-            header("Location: menu_reservas.php?error=emptyfields&");
+            header("Location: reservar.php?emptyfields");
             exit();
         }
     
@@ -60,7 +60,7 @@
                         mysqli_stmt_bind_param($stmt, 'sssssssss',$userId, $clientName,$nPessoas, $date, $time, $categoria, $clientEmail,   $clientPhone, $observacoes );
                         mysqli_stmt_execute($stmt);
         
-                        header("Location: consultar_reservas.php?registo=success");
+                        header("Location: consultar_reservas.php?");
                         exit();
                     }
                 

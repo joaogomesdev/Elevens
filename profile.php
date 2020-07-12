@@ -178,6 +178,22 @@ session_start();
 
 
 <?php endif ?>
+
+
+<?php if(  isset($_GET['emptyfieldsPass']) ) : ?>
+
+<div class="container emp-profile">
+
+    <div class="alert alert-danger d-flex justify-content-center"r role="alert">
+        
+    <h3>Insira a password para confirmar a edição<span class="badge badge-secondary bg-sdanger">!</span></h3>
+        
+    </div>
+
+</div>
+
+
+<?php endif ?>
     
     <div class="container emp-profile">
         <?php foreach($result as $row) : ?>
@@ -238,7 +254,7 @@ session_start();
                                         </div>
                                         <div class="row">
                                             <div class="col-md-6">
-                                                <label>Name</label>
+                                                <label>Nome</label>
                                             </div>
                                             <div class="col-md-6">
                                             <p><?php echo $row['fname'] . " " . $row['lname']?></p>
@@ -254,19 +270,11 @@ session_start();
                                         </div>
                                         <div class="row">
                                             <div class="col-md-6">
-                                                <label>Phone</label>
+                                                <label>Contacto Telefónico</label>
                                                
                                             </div>
                                             <div class="col-md-6">
                                             <p><?php echo $row['phone']?></p>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <label>Data de Nascimento</label>
-                                            </div>
-                                            <div class="col-md-6">
-                                            <p><?php echo $row['born_date']?></p>
                                             </div>
                                         </div>
                                         <div class="row">

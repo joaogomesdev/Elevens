@@ -1,13 +1,24 @@
 <?php 
 session_start();
 
+
+
+if($_SESSION['userStatus'] !== 'admin'){
+
+  header("Location: ../index.php?acesso=negado");
+  exit();
+}
+
+
+
+
 ?>
 
 
 <html>
   <head>
     <meta charset="utf-8" />
-    <title>App Help Desk</title>
+    <title>Dashboard</title>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link href="../assets/css/styles.css" rel="stylesheet" />
@@ -38,12 +49,11 @@ session_start();
               <div class="row">
                 <div class="col">
                   
-                  <form action="regista_duvida.php" method="post">
+                  <form action="../includes/registar_evento.php" method="post" enctype="multipart/form-data">
                     <div class="form-group" >
                       <label>Foto</label>
-                    <div class="custom-file">
-                          <input type="file" class="custom-file-input" id="customFileLang" lang="es">
-                          <label class="custom-file-label" for="customFileLang">Seleccionar Archivo</label>
+                        <div class="custom-file">
+                              <input type="file" name="foto" id="foto"/>
                         </div>
                     </div>
                     <div class="form-group" >
@@ -54,12 +64,12 @@ session_start();
                     <div class="row ">
                       <div class="col-6">
                       <label>Data</label>
-                      <input name="titulo" type="date" class="form-control" placeholder="Título">
+                      <input name="date" type="date" class="form-control" placeholder="Título">
                     
                     </div>
                       <div class="col-6">
                       <label>Hora</label>
-                      <input name="titulo" type="time" class="form-control" placeholder="Título">
+                      <input name="hora" type="time" class="form-control" placeholder="Título">
                       
                     </div>
                     </div>
@@ -76,7 +86,7 @@ session_start();
                       </div>
 
                       <div class="col-6">
-                        <button class="btn btn-lg btn-outline-info btn-block" name="colocar-duvida-submit" type="submit">Adicionar Evento</button>
+                        <button class="btn btn-lg btn-outline-info btn-block" name="registar-evento" type="submit">Adicionar Evento</button>
                       </div>
                     </div>
                   </form>

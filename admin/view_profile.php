@@ -125,7 +125,7 @@ $sql = "SELECT * FROM users WHERE  id = $id_user";
       </a>
       <ul class="navbar-nav">
           <li class="nav-item">
-              <a class="btn btn-primary text-white"href="index.php">Voltar</a>
+              <a class="btn btn-primary text-white"href="users.php">Voltar</a>
           </li>
       </ul>
     </nav> 
@@ -135,12 +135,21 @@ $sql = "SELECT * FROM users WHERE  id = $id_user";
             <form method="post">
                 <div class="row">
                     <div class="col-md-4">
-                        <div class="profile-img">
-                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS52y5aInsxSm31CvHOFHWujqUx_wWTS9iM6s7BAm21oEN_RiGoog" alt=""/>
+                    <div class="profile-img">
+                        <?php if(($row['foto_status'] == 'com')) {?>
+					<a>
+					<img src="../includes/showfile.php?user_id=<?= $id_user;?>" width="100">
+					</a>
+					<?php  } ?>
+                        <?php if(($row['foto_status'] == 'sem')) {?>
+					<a>
+					<img src="../assets/img/user.png" alt="" width="100">
+					</a>
+					<?php  } ?>
                             <div class="file btn btn-lg btn-primary">
-                                <?php echo $row['fname'] . $row['lname']?>
-                                <input type="file" name="file"/>
+                            <?php echo $row['fname'] . " " .$row['lname']?>
                             </div>
+
                         </div>
                     </div>
                     <div class="col-md-6">
@@ -196,14 +205,6 @@ $sql = "SELECT * FROM users WHERE  id = $id_user";
                                             </div>
                                             <div class="col-md-6">
                                             <p><?php echo $row['phone']?></p>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <label>Data de Nascimento</label>
-                                            </div>
-                                            <div class="col-md-6">
-                                            <p><?php echo $row['born_date']?></p>
                                             </div>
                                         </div>
                                         <div class="row">

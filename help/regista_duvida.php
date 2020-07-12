@@ -14,19 +14,21 @@
       $username = $_SESSION['fname'] . " " .$_SESSION['lname'];
       $titulo = $_POST['titulo'];
       $categoria =  $_POST['categoria'];
+      $email = $_POST['email'];
+      $social = $_POST['social'];
       $descricao =  $_POST['descricao'];
     
     
     
-        if( empty($titulo) || empty($categoria) || empty($descricao)){
+        if( empty($titulo) || empty($categoria) || empty($descricao) || empty($email)  ){                                                                          
             
-            header("Location: menu_duvidas.php?error=emptyfields&");
+            header("Location: menu_duvidas.php?emptyfields");
             exit();
         }
     
         else {
     
-            $sql = "SELECT 	id_user, username , titulo  FROM duvidas WHERE id_user=? and username=? and titulo=? ";
+            $sql = "SELECT 	id_user, username , titulo  FROM duvidas WHERE id_user=? and email=? and titulo=? ";
             $stmt = mysqli_stmt_init($conn);
         
             if(!mysqli_stmt_prepare($stmt , $sql)){
@@ -36,7 +38,7 @@
             }
             else {
     
-                mysqli_stmt_bind_param($stmt, "sss" , $userid, $username, $titulo);
+                mysqli_stmt_bind_param($stmt, "sss" , $userid, $email, $titulo);
                 mysqli_stmt_execute($stmt);
                 mysqli_stmt_store_result($stmt);
                 $result = mysqli_stmt_num_rows($stmt);
@@ -47,7 +49,7 @@
                  }
 
                 else{
-                    $sql = "INSERT INTO duvidas (id_user, username,titulo ,categoria, descricao) VALUES ( ? , ? ,  ? , ? ,?)";
+                    $sql = "INSERT INTO duvidas (id_user, username,titulo ,categoria,email, social, descricao) VALUES ( ? , ? ,  ?, ? , ? , ? ,?)";
                     $stmt = mysqli_stmt_init($conn);
         
                     if(!mysqli_stmt_prepare($stmt , $sql)){
@@ -57,7 +59,7 @@
                     else{
                      
         
-                        mysqli_stmt_bind_param($stmt, 'sssss',  $userid,$username, $titulo, $categoria , $descricao);
+                        mysqli_stmt_bind_param($stmt, 'sssssss',  $userid,$username, $titulo, $categoria ,$email, $social , $descricao);
                         mysqli_stmt_execute($stmt);
         
                         header("Location: consultar_duvida.php?registo=success");

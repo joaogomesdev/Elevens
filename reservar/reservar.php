@@ -24,6 +24,21 @@ session_start();
 
   <?php include_once "navbar.php" ?>
 
+
+<?php if(  isset($_GET['emptyfields']) ) : ?>
+
+<div class="container emp-profile">
+
+<div class="alert alert-danger d-flex justify-content-center"r role="alert">
+    
+<h3>Por Favor preencha todos os campos do formulário <span class="badge badge-secondary bg-danger">!</span></h3>
+    
+</div>
+
+</div>
+
+
+<?php endif ?>
     <div class="container">    
       <div class="row">
 

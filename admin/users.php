@@ -1,3 +1,4 @@
+
 <?php 
 session_start();
 
@@ -68,7 +69,6 @@ $sql = "SELECT * FROM users ";
                     <th scope="col">Nome</th>
                     <th scope="col">Idade</th>
                     <th scope="col">E-Mail</th>
-                    <th scope="col">Data de Nascimento</th>
                     <th scope="col">Ultima edição</th>
                     <th scope="col">Data de Registo</th>
                     <th scope="col">Status</th>
@@ -89,7 +89,6 @@ $sql = "SELECT * FROM users ";
                     <td><?= $row['fname'] . $row['lname']?></td>   
                     <td><?= $row['age']?></td>
                     <td><?= $row['email']?></td>
-                    <td><?= $row['born_date']?></td>
                     <td><?= $row['updated_at']?></td>
                     <td><?= $row['created_at']?></td>
                     <td><?= $row['user_status']?></td>

@@ -213,14 +213,8 @@ $sql = "SELECT * FROM users WHERE  id = $id_user";
              <div class="row">
                     <div class="col-md-6">
                     <div class="form-group">
-                      <label>Phone</label>
+                      <label>Contacto telefónico</label>
                       <input name="phone" id="nome" type="text" class="form-control" value="<?php echo $row['phone']?>">
-                    </div>
-                    </div>
-                    <div class="col-md-6">
-                    <div class="form-group">
-                      <label>Data de Nascimento</label>
-                      <input name="born_date" id="born_date" type="date" class="form-control" value="<?php echo $row['born_date']?>">
                     </div>
                     </div>
 

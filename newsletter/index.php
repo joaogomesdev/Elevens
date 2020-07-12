@@ -89,10 +89,11 @@ body {
     </style>
  
 </head>
-
-    <body class="text-center">
-                    <form method="POST" action="action_visit.php"  class="form-signin">
+ 
+<body class="text-center">
+  <form method="POST" action="action_visit.php"  class="form-signin">
     
+                 <a class="btn btn-lg btn-success text-white btn-block mb-5" href="../index.php" > Voltar </a>
                 <img class="mb-4" src="../assets\img\o-negocio.png" alt="" width="72" height="72">
                 <h1 class="h3 mb-3 font-weight-normal">Subscrever a Newsletter</h1>
                 <input type="text"  name="fname"class="form-control top" placeholder="Primeiro Nome" required autofocus>

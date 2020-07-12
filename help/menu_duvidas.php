@@ -22,6 +22,20 @@
   <body>
     <?php require "navbar_index.php" ?>
 
+    <?php if(  isset($_GET['emptyfields']) ) : ?>
+
+<div class="container emp-profile">
+
+    <div class="alert alert-danger d-flex justify-content-center"r role="alert">
+        
+    <h3>Por Favor preencha todos os campos do formulário <span class="badge badge-secondary bg-danger">!</span></h3>
+        
+    </div>
+
+</div>
+
+
+<?php endif ?>
 
     <div class="container">    
       <div class="row">
@@ -34,12 +48,24 @@
             <div class="card-body">
               <div class="row">
                 <div class="col-6 d-flex justify-content-center">
-                  <a href="colocar_duvida.php" ><img src="formulario_abrir_chamado.png" width="70" height="70"></a>
+                   <h3>Colocar Duvida</h3><br>
                 </div>
                 <div class="col-6 d-flex justify-content-center">
-                  <a href="consultar_duvida.php" ><img src="formulario_consultar_chamado.png" width="70" height="70"></a>
+                  <h3>Consultar Duvidas</h3><br>
                 </div>
               </div>
+              <div class="row">
+                <div class="col-6 d-flex justify-content-center">
+                  <div></div>
+                   
+                  <a href="colocar_duvida.php" ><img src="duvida.png" width="70" height="70"></a>
+                </div>
+                <div class="col-6 d-flex justify-content-center">
+               
+                  <a href="consultar_duvida.php" ><img src="duvidas.png" width="70" height="70"></a>
+                </div>
+              </div>
+             
             </div>
           </div>
         </div>

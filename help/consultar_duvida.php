@@ -59,7 +59,20 @@ if(!isset($_SESSION['userId'])){
 
 <?php endif ?>
 
+    <!-- <?php if(  isset($_GET['noConfirmBox']) ) : ?> -->
 
+<div class="container emp-profile">
+
+    <div class="alert alert-danger d-flex justify-content-center"r role="alert">
+        
+    <h3>Confirme a sua edição marcado a opção "Marque para confirmar" no formulario de edição<span class="badge badge-secondary bg-danger">!</span></h3>
+        
+    </div>
+
+</div>
+
+
+<!-- <?php endif ?> -->
 
     <div class="container">    
       <div class="row">
@@ -108,7 +121,16 @@ if(!isset($_SESSION['userId'])){
                   <?php if($_SESSION['userStatus'] ==  'admin' || $row['id_user'] ==  $_SESSION['userId']) :?>
       
                     <a type="button" id="delete-duvida-btn" name="delete-duvida-btn" class="btn btn-danger text-white" href="../includes/delete_data_duvidas.php?delete=sim&id=<?php echo $row['id_duvida'] ?>"> Eliminar</a>
-                  <?php endif ?>
+        
+                 
+                    <?php endif ?>
+                    <?php if($row['duvida_status'] == 'pendente' && $_SESSION['userStatus'] ==  'admin') : ?>
+                       <td> <a type="button" id="despromover-user-btn" name="despromover-user-btn" class="btn btn-primary text-white" href="../admin/responderDuvida.php?id_user=<?= $row['id_user']?>&id_duvida=<?= $row['id_duvida']?>">Responder</a></td>
+                    <?php endif ?>
+
+                    <?php if($row['duvida_status'] !== 'pendente') : ?>
+                       <td> <a type="button" id="despromover-user-btn" name="despromover-user-btn" class="btn btn-success text-white" href=""><?= $row['duvida_status']?></a></td>
+                    <?php endif ?>
                   </div>
 
                       <?php endforeach ?>

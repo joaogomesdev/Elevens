@@ -1,10 +1,13 @@
 <?php
 include ('db.inc.php');
+
+
 $query=" select name_img,type_img,size_img,data_img from users where id='".$_GET['user_id']."';"; 
 //echo $query;
 
 $result=mysqli_query($conn,$query);
 $row=mysqli_fetch_array($result);
+
 $tipo_foto=$row["type_img"];
 
 $nome_foto=$row["name_img"];

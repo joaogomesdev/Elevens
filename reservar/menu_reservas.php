@@ -25,7 +25,7 @@
         <div class="card-home">
           <div class="card">
             <div class="card-header">
-              Menu
+              Reserva de Mesa
             </div>
             <div class="card-body">
               <div class="row">
@@ -45,6 +45,37 @@
                 <div class="col-6 d-flex justify-content-center">
                
                   <a href="consultar_reservas.php" ><img src="consulta-mesa.png" width="70" height="70"></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+      <div class="row">
+
+        <div class="card-home">
+          <div class="card">
+            <div class="card-header">
+              Reservas de eventos
+            </div>
+            <div class="card-body">
+              <div class="row">
+                <div class="col-6 d-flex justify-content-center">
+                   <h3>Fazer Reservas</h3><br>
+                </div>
+                <div class="col-6 d-flex justify-content-center">
+                  <h3>Consultar Reservas</h3><br>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-6 d-flex justify-content-center">
+                  <div></div>
+                   
+                  <a href="../index.php" ><img src="../eventos/musica.png" width="70" height="70"></a>
+                </div>
+                <div class="col-6 d-flex justify-content-center">
+               
+                  <a href="consultarReservas_eventos.php" ><img src="consulta-mesa.png" width="70" height="70"></a>
                 </div>
               </div>
             </div>

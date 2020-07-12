@@ -39,14 +39,10 @@ if(!isset($_SESSION['userId'])){
 
 <div class="alert alert-success" role="alert">
 
-  Duvida colocada com sucesso     
+ Reserva feita com sucesso   
 
 </div>
-<div class="alert alert-info" role="alert">
 
-  Iremos Responder logo que possamos     
-
-</div>
 <?php endif ?>
   <?php if( isset($_GET['update']) && isset($_GET['update']) == 'success' ) : ?>
 
@@ -107,13 +103,14 @@ if(!isset($_SESSION['userId'])){
                           <?php if($row['id_client'] ==  $_SESSION['userId'] && $row['status'] == 'pendente'):?>
 
                           <a type="button" id="editar" class="btn btn-warning text-white card-link" href="editar_reserva.php?id=<?php echo $row['id_reserva'] ?>"> Editar</a>
-                          <a type="button" id="delete-duvida-btn" name="delete-duvida-btn card-link" class="btn btn-danger text-white" href="../includes/delete_data_duvidas.php?delete=sim&id=<?php echo $row['id_reserva'] ?>">Cancelar</a>
+                          <a type="button" id="delete-duvida-btn" name="delete-duvida-btn card-link" class="btn btn-danger text-white" href="../includes/cancelar_reserva.php?cancelar=sim&id=<?php echo $row['id_reserva'] ?>>"  
+                          >Cancelar</a>
 
                           <?php endif ?>
 
                           <?php if($_SESSION['userStatus'] ==  'admin' && $row['status'] == 'pendente'):?>
                             <a type="button" id="delete-duvida-btn" name="delete-duvida-btn card-link" class="btn btn-primary text-white" href="../includes/aprovar_reserva.php?aprovar=sim&id=<?php echo $row['id_reserva'] ?>">Aprovar</a>
-
+                            <a type="button" id="delete-duvida-btn" name="delete-duvida-btn card-link" class="btn btn-danger text-white" href="../includes/cancelar_reserva.php?cancelar=sim&id=<?php echo $row['id_reserva'] ?>">Cancelar</a>
                             <?php endif ?>
 
 

@@ -35,7 +35,7 @@ if(!isset($_SESSION['userId'])){
           <div class="card">
             <div class="card-header">
             
-                    <h1>Alguma dúvida? <span class="badge badge-danger">?</span></h1>
+                    <h1>Qual a sua dúvida? <span class="badge badge-danger">?</span></h1>
                   
             </div>
             <div class="card-body">
@@ -57,6 +57,16 @@ if(!isset($_SESSION['userId'])){
                         <option>Eventos</option>
                         <option>Outro</option>
                       </select>
+                    </div>
+
+                    <div class="form-group" >
+                      <label>Email para contacto</label>
+                      <input name="email" type="email" class="form-control" placeholder="Insira o email que deseja se contactado">
+                    </div>
+
+                    <div class="form-group" >
+                      <label>Se desejar ser contactado por Facebook ou Instagram insira o seu ulitizador e especifique qual </label>
+                      <input name="social" type="text" class="form-control" placeholder="Exemplo: Meu Facebook: Meu Utilizador / Meu Instagram: Meu @ ">
                     </div>
                     
                     <div class="form-group">

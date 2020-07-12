@@ -9,7 +9,7 @@ if(!isset($_SESSION['userId'])){
 }
 require '../includes/db.inc.php';
 
-$id_duvida = $_GET['id'];
+$id_reserva = $_GET['id'];
 
 $sql = "SELECT id_reserva,id_client, client_name ,number_pessoas,DATE_FORMAT(date_reserva, '%d/%m/%Y') as date, DATE_FORMAT(time_reserva, '%H:%i') as time, categoria, client_email, client_phone, observacoes, created_at, updated_at FROM reservas WHERE  id_reserva = $id_reserva";
     $result = mysqli_query( $conn, $sql);
@@ -66,7 +66,7 @@ $sql = "SELECT id_reserva,id_client, client_name ,number_pessoas,DATE_FORMAT(dat
               <div class="row">
                 <div class="col">
                 <?php foreach($result as $row) : ?>
-                <form action="../includes/update_data_reserva.php?id=<?php echo $_SESSION['userId'] ?>" method="post">
+                <form action="../includes/update_data_reserva.php?id=<?= $_GET['id'] ?>" method="post">
 
                             <div class="form-row">
                                 <div class="form-group col-md-9">

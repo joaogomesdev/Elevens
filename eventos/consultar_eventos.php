@@ -1,6 +1,5 @@
 
 
-
 <?php
 
 session_start();
@@ -10,6 +9,8 @@ if(!isset($_SESSION['userId'])){
   header("Location: ../autenticar.php?acesso=negado");
   exit();
 }
+
+setlocale(LC_ALL, 'pt_BR');
  
 
 ?>
@@ -20,7 +21,32 @@ if(!isset($_SESSION['userId'])){
     <title>Consultar Reservas</title>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+       <!-- Font Awesome icons (free version)-->
+       <script src="https://use.fontawesome.com/releases/v5.12.1/js/all.js" crossorigin="anonymous"></script>
+       
 
+       <!-- Google fonts-->
+       <link href="https://fonts.googleapis.com/css?family=Merriweather+Sans:400,700" rel="stylesheet" />
+       <link href="https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic" rel="stylesheet" type="text/css" />
+       <link href="https://fonts.googleapis.com/css?family=Great+Vibes&display=swap" rel="stylesheet">
+
+       <!-- Third party plugin CSS-->
+       <link href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css" rel="stylesheet" />
+       
+        <!-- Font Awesome icons (free version)-->
+        <script src="https://use.fontawesome.com/releases/v5.12.1/js/all.js" crossorigin="anonymous"></script>
+       
+
+        <!-- Google fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Merriweather+Sans:400,700" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic" rel="stylesheet" type="text/css" />
+        <link href="https://fonts.googleapis.com/css?family=Great+Vibes&display=swap" rel="stylesheet">
+
+        <!-- Third party plugin CSS-->
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css" rel="stylesheet" />
+
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="assets/css/styles.css" rel="stylesheet" />
     <style>
       .card-consultar-chamado {
         padding: 30px 0 0 0;
@@ -39,7 +65,7 @@ if(!isset($_SESSION['userId'])){
 body
 {
   background-color: #dadde6;
-  font-family: arial
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif
 }
 
 .fl-left{float: left}
@@ -71,7 +97,6 @@ h1
   color: #989898;
   margin-bottom: 10px;
   font-family: 'Oswald', sans-serif;
-  text-transform: uppercase;
   border-radius: 4px;
   position: relative
 }
@@ -119,7 +144,9 @@ h1
   transform: translate(-50%, -50%)
 }
 
-.date time span{display: block}
+.date time span{
+  display: block;
+}
 
 .date time span:first-child
 {
@@ -139,26 +166,25 @@ h1
 {
   display: table-cell;
   width: 75%;
-  font-size: 85%;
+  font-size: 20px;
   padding: 10px 10px 30px 50px
 }
 
 .card-cont h3
 {
   color: #3C3C3C;
-  font-size: 130%
-}
-
-.row:last-child .card:last-of-type .card-cont h3
-{
-  text-decoration: line-through
+  font-size: 130%;
+  font-weight: bold;
 }
 
 .card-cont > div
 {
   display: table-row
 }
-
+.card-cont .even-info {
+  display: flex;
+  flex-direction: column;
+}
 .card-cont .even-date i,
 .card-cont .even-info i,
 .card-cont .even-date time,
@@ -175,39 +201,41 @@ h1
 
 .card-cont .even-info p
 {
-  padding: 30px 50px 0 0
+  font-size: 16px;
 }
 
 .card-cont .even-date time span
 {
-  display: block
+  display: flex;
+  margin-bottom: 5px;
 }
 
 .card-cont a
 {
-  display: block;
-  text-decoration: none;
-  width: 80px;
   height: 30px;
-  background-color: #D8DDE0;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
   color: #fff;
-  text-align: center;
-  line-height: 30px;
-  border-radius: 2px;
+  border-radius: 5px;
   position: absolute;
   right: 10px;
-  bottom: 10px
+  bottom: 10px;
+  font-size: 14px;
+  font-weight: bold;
 }
 
-.row:last-child .card:first-child .card-cont a
-{
-  background-color: #037FDD
+img {
+  width: 40px;
+  height: 40px;
+  margin-right: 10px;
 }
 
-.row:last-child .card:last-child .card-cont a
-{
-  background-color: #F8504C
-}
+
+
+
 
 @media screen and (max-width: 860px)
 {
@@ -226,6 +254,84 @@ h1
   {
     font-size: 75%
   }
+
+  p {
+    color: #fec500;
+  }
+}
+/*--------------------*/
+
+
+#mu-about {
+	background-color: #fff;
+	display: inline;
+	float: left;
+	width: 100%;
+}
+
+.mu-about-area {
+	display: inline;
+	float: left;
+	padding: 100px 0;
+	width: 100%;
+}
+
+.mu-about-left {
+	display: inline;
+	float: left;
+	width: 100%;
+}
+
+.mu-about-right {
+	display: inline;
+	float: left;
+	margin-top: 35px;
+	width: 100%;
+	background-color: #fff;
+	padding: 40px;
+	margin-left: -175px;
+	box-shadow: 3px 1px 18px -9px #000;
+}
+
+.mu-about-right p {
+    font-size: 15px;
+    margin: 10px 0;
+}
+.itemEvento {
+  display: flex;
+}
+.itemEvento p {
+    margin-left: 10px;
+}
+
+section#events {
+    padding-top: 20px;
+    background: #666360;
+}
+section#events img.eventImg {
+    width: 700px;
+    height: 400px;
+}
+.titleSection {
+    background: var(--green);
+    padding-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow:  5px 10px var(--yellow);
+}
+.justify {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.noWrap {
+  flex-wrap: nowrap;
+}
+.line {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
     </style>
   </head>
@@ -233,7 +339,7 @@ h1
   <body>
 
   <?php include_once "navbar.php" ?>
-  <?php include "../includes/see_data_reservas.php"?>
+  <?php include "../includes/see_data_eventos.php"?>
 
   <?php if( isset($_GET['registo']) && isset($_GET['registo']) == 'success' ) : ?>
 
@@ -259,113 +365,93 @@ h1
 
 <?php endif ?>
 
-<section class="container">
 <h1>Eventos</h1>
-  <div class="row">
-    <article class="card fl-left">
-      <section class="date">
-        <time datetime="23th feb">
-          <span>23</span><span>feb</span>
-        </time>
-      </section>
-      <section class="card-cont">
-        <small>dj khaled</small>
-        <h3>live in sydney</h3>
-        <div class="even-date">
-         <i class="fa fa-calendar"></i>
-         <time>
-           <span>wednesday 28 december 2014</span>
-           <span>08:55pm to 12:00 am</span>
-         </time>
-        </div>
-        <div class="even-info">
-          <i class="fa fa-map-marker"></i>
-          <p>
-            nexen square for people australia, sydney
-          </p>
-        </div>
-        <a href="#">tickets</a>
-      </section>
-    </article>
-    <article class="card fl-left">
-      <section class="date">
-        <time datetime="23th feb">
-          <span>23</span><span>feb</span>
-        </time>
-      </section>
-      <section class="card-cont">
-        <small>dj khaled</small>
-        <h3>corner obsest program</h3>
-        <div class="even-date">
-         <i class="fa fa-calendar"></i>
-         <time>
-           <span>wednesday 28 december 2014</span>
-           <span>08:55pm to 12:00 am</span>
-         </time>
-        </div>
-        <div class="even-info">
-          <i class="fa fa-map-marker"></i>
-          <p>
-            nexen square for people australia, sydney
-          </p>
-        </div>
-        <a href="#">tickets</a>
-      </section>
-    </article>
-  </div>
-  <div class="row">
-    <article class="card fl-left">
-      <section class="date">
-        <time datetime="23th feb">
-          <span>23</span><span>feb</span>
-        </time>
-      </section>
-      <section class="card-cont">
-        <small>dj khaled</small>
-        <h3>music kaboom festivel</h3>
-        <div class="even-date">
-         <i class="fa fa-calendar"></i>
-         <time>
-           <span>wednesday 28 december 2014</span>
-           <span>08:55pm to 12:00 am</span>
-         </time>
-        </div>
-        <div class="even-info">
-          <i class="fa fa-map-marker"></i>
-          <p>
-            nexen square for people australia, sydney
-          </p>
-        </div>
-        <a href="#">booked</a>
-      </section>
-    </article>
-    <article class="card fl-left">
-      <section class="date">
-        <time datetime="23th feb">
-          <span>23</span><span>feb</span>
-        </time>
-      </section>
-      <section class="card-cont">
-        <small>dj khaled</small>
-        <h3>hello dubai festivel</h3>
-        <div class="even-date">
-         <i class="fa fa-calendar"></i>
-         <time>
-           <span>wednesday 28 december 2014</span>
-           <span>08:55pm to 12:00 am</span>
-         </time>
-        </div>
-        <div class="even-info">
-          <i class="fa fa-map-marker"></i>
-          <p>
-            nexen square for people australia, sydney
-          </p>
-        </div>
-        <a href="#">cancel</a>
-      </section>
-    </article>
-  </div>
-</div>
+<section  id="events">
+			<div class="container">  
+                <div class="titleSection">
+                            <h1>Nossos eventos</h1>
+                </div>
+        <?php foreach($result as $evento) :?>
+        
+				<div class="row">
+					<div class="col-md-12">
+						<div class="mu-about-area">
+							<!-- Start Feature Content -->
+							<div class="row noWrap">
+								<div class="col-md-6">
+									<div class="mu-about-left">
+                                    <img class="eventImg" src="../includes/showFotoEvento.php?id=<?= $evento['id'];?>" >
+       </div>
+								</div>
+								<div class="col-md-6">
+									<div class="mu-about-right">
+                                        <h2><?=$evento['title']?></h2>
+                                        <p class="mt-3 mb-3"><?=$evento['descricao']?></p>
+
+                                        <div class="itemEvento">
+                                        <img src="../assets\img\calendario.svg" width="60" height="60" alt="" >
+                                            <p class="font-weight-bolder labelEvento"><strong>Data do evento: </strong> <span class="font-weight-bolder"><?= $evento['date'] ?></span></p>
+                                        </div>
+
+                                        <div class="mt-3 itemEvento">
+                                        <img src="../assets/img/tempo.svg" width="60" height="60" alt="">
+                                            <p class="font-weight-bolder labelEvento"> <strong>Hora do evento: </strong> <span class="font-weight-bolder"><?= $evento['time'] ?></span></p>
+                                        </div>
+									</div>
+								</div>
+                            </div>
+							<!-- End Feature Content -->
+                            <?php    if(isset($_SESSION['userId'])) : ?>
+                            <?php if($_SESSION['userStatus'] == 'admin') : ?>
+            
+                               <div class="line">
+
+                                 <div class="container-fluid p-0">
+                                   <div class=" text-center ">
+                                     
+                                     <a class="btn btn-warning text-white mt-4" name="submit-foto" href="editarEvento.php?id=<?= $evento['id'];?>" type="submit">Editar Evento<a>
+                                       </div>
+                                      </div>
+                                      
+                                      
+                                      <?php endif ?>
+                                      <?php if($_SESSION['userStatus'] == 'admin') : ?>
+                                        
+                                        <?php if($evento['evento_status'] == 'ativo') : ?>
+                                        <div class="container-fluid p-0">
+                <div class=" text-center ">
+                  <a class="btn btn-danger text-white mt-4" name="submit-foto" href="../includes/desativar_evento.php?id=<?= $evento['id'];?>&action=desativar" type="submit">Desativar<a>
+                    </div>
+                  </div>
+
+                  <?php endif ?>
+
+                  <?php if($evento['evento_status'] == 'desativo') : ?>
+                                        <div class="container-fluid p-0">
+                <div class=" text-center ">
+                  <a class="btn btn-info text-white mt-4" name="submit-foto" href="../includes/desativar_evento.php?id=<?= $evento['id'];?>&action=ativar" type="submit">Ativar<a>
+                    </div>
+                  </div>
+
+                  <?php endif ?>
+                  
+                </div>
+                          
+                            <?php endif ?>
+                            <?php endif ?>
+
+						</div>
+					</div>
+                </div>
+                        
+	
+
+        <?php endforeach ?>
+        
+		</div>
+        </section>
+            
+          
 
    
 

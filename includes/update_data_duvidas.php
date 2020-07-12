@@ -28,7 +28,7 @@
         
         if(empty($confirmBox) ){
 
-            header("Location: ../help/menu_duvidas.php?noConfirmBox");
+            header("Location: ../help/consultar_duvida.php?noConfirmBox");
             exit();
 
         }

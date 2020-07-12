@@ -68,10 +68,12 @@ $sql = "SELECT * FROM duvidas ";
                     <th scope="col">Nome do Cliente</th>
                     <th scope="col">Tiulo</th>
                     <th scope="col">Categoria</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Social</th>
                     <th scope="col">Descrição</th>
                     <th scope="col">Data de criação</th>
                     <th scope="col">Status</th>
-                    <th scope="col">Options</th>
+
                     
                     
                     
@@ -85,29 +87,25 @@ $sql = "SELECT * FROM duvidas ";
                     <th> <a type="button" id="view-user-btn" name="view-user-btn" class="btn btn-info text-white" href="view_profile.php?&id=<?php echo $row['id_user'] ?>">Ver Perfil</a></th>
                     <th scope="row"><?= $row['id_duvida']?></th>
 
-                    <td><?= $row['fname'] . $row['lname']?></td>   
+                    <td><?= $row['username']?></td>   
 
                     <td><?= $row['titulo']?></td>
                     <td><?= $row['categoria']?></td>
+                    <td><?= $row['email']?></td>
+                    <td><?= $row['social']?></td>
                     <td><?= $row['descricao']?></td>
                     <td><?= $row['create_at']?></td>
                  
 
-
-                    <?php if($row['status'] === 'n_respondido') : ?>
-                       <td> <a type="button" id="despromover-user-btn" name="despromover-user-btn" class="btn btn-primary text-white" href="">Responder</a></td>
+                    <?php if($row['duvida_status'] == 'pendente') : ?>
+                       <td> <a type="button" id="despromover-user-btn" name="despromover-user-btn" class="btn btn-primary text-white" href="responderDuvida.php?id_user=<?= $row['id_user']?>&id_duvida=<?= $row['id_duvida']?>">Responder</a></td>
                     <?php endif ?>
 
-                    <?php if($row['status'] === 'respondido') : ?>
-                       <td> <a type="button" id="promover-user-btn" name="promover-user-btn" class="btn btn-warning text-white" href="">Promover</a></td>
+                    <?php if($row['duvida_status'] !== 'pendente') : ?>
+                       <td> <a type="button" id="despromover-user-btn" name="despromover-user-btn" class="btn btn-success text-white" href=""><?= $row['duvida_status']?></a></td>
                     <?php endif ?>
                  
-                    <?php if($row['duvida_status'] === 'ativo') : ?>
-                        <td><a type="button" id="desativar-user-btn" name="desativar-user-btn" class="btn btn-secondary text-white" href="">Desativar</a></td>
-                    <?php endif ?>
-                    <?php if($row['duvida_status'] === 'desativado') : ?>
-                        <td><a type="button" id="ativar-user-btn" name="ativar-user-btn" class="btn btn-primary text-white" href="">Ativar</a></td>
-                    <?php endif ?>
+                 
 
                 <?php endforeach ?>
             </tbody>

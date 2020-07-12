@@ -28,13 +28,13 @@
     
         if( empty($name) || empty($categoria) || empty($date) || empty($time)){
             
-            header("Location: consultar_reservas.php?error=emptyfields&");
+            header("Location: ../reservar/editar_reserva.php?error=emptyfields&id0".$id_reserva);
             exit();
         }
         
         if(empty($confirmBox) ){
 
-            header("Location: ../reservar/menu_reservas.php?noConfirmBox");
+            header("Location: ../reservar/editar_reserva.php?noConfirmBox".$id_reserva);
             exit();
 
         }
@@ -65,11 +65,11 @@
                 else{
                     
                     
-                    $sql = "UPDATE reservas set client_name=? where id_reserva=?";
+                    $sql = "UPDATE reservas set client_name=?,number_pessoas=?, date_reserva=?, time_reserva=?, categoria=?,client_email=?, client_phone=? , observacoes=?  where id_reserva=?";
                     $stmt = mysqli_stmt_init($conn);
          
                     if(!mysqli_stmt_prepare($stmt , $sql)){
-                        header("Location: consultar_reservas.php?eraaaaaror=sqlierror");
+                        header("Location: ../reservar/consultar_reservas.php?eraaaaaror=sqlierror");
                         exit();
                     }
                     else{
