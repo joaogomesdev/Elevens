@@ -2,7 +2,9 @@
 
 # Ellevens Caffe WebSite
 
-> This Project and a website for a local cafe in my city, the project will be presented at my PAP, which is my final proof of a professional course I attend at my school The entire project was carried out entirely by me
+> This project and a website for a local cafe in my city, the project was presented at my PAP, which is my final proof of a professional course I attend at my school.
+I was evaluated with a presentation, where I was able to present my project and all phases of development. The grade I got was the maximum grade, with a very high profile before the juris. The whole project was carried out entirely by me with the technologies that I presented in the course
+
 
 # Layout Demonstration - Web
 
